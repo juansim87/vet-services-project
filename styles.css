@@ -1,49 +1,109 @@
-/* .form-box {
-    width: 200px;
-    height: 200px;
-    background-color: brown;
-} */
-
-header {
-    height: 100px;
-}
-
-nav {
-    height: 100%;
-	/* position: fixed; */
+#premises {
+    display: flex;
     width: 100%;
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
+    box-sizing: border-box;
+    gap: 20px;
+    padding: 20px;
 }
 
-.nav__content {
-    height: 100%;
-	display: flex;
-	align-items: center;
-	padding-bottom: 0;
-}
-
-#hero {
-    height: 100vh;
-    width: 100%;
+/* tarjetas de clínicas */
+.card-clinica {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+    max-width: 300px;
 }
 
-.title-box {
+.card-clinica:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-clinica h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.card-clinica p {
+    margin: 0;
+    color: #555;
+}
+
+/* links servicios */
+.services-container {
     display: flex;
-    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card-service {
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-service a {
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.card-service a:hover {
+    color: #003366;
+}
+
+/* filtro de localidad */
+.filter-button {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.filter-button label {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.filter-button select {
+    padding: 10px;
+    font-size: 1rem;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/*  reset */
+.reset-button {
+    display: flex;
     justify-content: center;
+    padding: 10px;
 }
 
-.title-img {
-    width: 100px;
+.reset-button .boton-reset {
+    background-color: #ff6666;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.title-img img {
-    width: 100%;
+.reset-button .boton-reset:hover {
+    background-color: #ff4444;
 }

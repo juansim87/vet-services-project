@@ -1,0 +1,49 @@
+/* .form-box {
+    width: 200px;
+    height: 200px;
+    background-color: brown;
+} */
+
+header {
+    height: 100px;
+}
+
+nav {
+    height: 100%;
+	/* position: fixed; */
+    width: 100%;
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+}
+
+.nav__content {
+    height: 100%;
+	display: flex;
+	align-items: center;
+	padding-bottom: 0;
+}
+
+#hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+.title-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-img {
+    width: 100px;
+}
+
+.title-img img {
+    width: 100%;
+}

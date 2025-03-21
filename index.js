@@ -207,20 +207,20 @@ const renderClients = () => {
     const petImg = document.createElement("img");
     petImg.setAttribute("src", client.imagen);
     petImg.classList.add("hidden");
-    
+
     const btnShowImg = document.createElement("button");
     btnShowImg.type = "button";
     btnShowImg.textContent = "Mostrar Imagen";
 
     btnShowImg.addEventListener("click", () => {
+      // console.log(client.isShowing);
       client.isShowing = !client.isShowing;
-      
+      petImg.classList.toggle("hidden");
+
       if (!client.isShowing) {
-        petImg.classList.remove("hidden");
-        btnShowImg.textContent = "Ocultar Imagen";
-      } else { 
-        petImg.classList.add("hidden");
         btnShowImg.textContent = "Mostrar Imagen";
+      } else {
+        btnShowImg.textContent = "Ocultar Imagen";
       }
     });
 

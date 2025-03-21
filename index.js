@@ -4,7 +4,8 @@ let clientes = [
     isEditing: false,
     mascota: "Atapuerco",
     especie: "cerdo",
-    imagen: "/media/client-pets/atapuerco.jpg",
+    imagen: "/media/client-pets/atapuerco.webp",
+    isShowing: false,
     cliente: "Juan Simón",
     proximaCita: "2025-03-06",
   },
@@ -13,7 +14,8 @@ let clientes = [
     isEditing: false,
     mascota: "Piticli",
     especie: "loro",
-    imagen: "/media/client-pets/piticli.jpg",
+    imagen: "/media/client-pets/piticli.webp",
+    isShowing: false,
     cliente: "Luis Fury",
     proximaCita: "2025-03-06",
   },
@@ -22,7 +24,8 @@ let clientes = [
     isEditing: false,
     mascota: "Freya",
     especie: "perro",
-    imagen: "/media/client-pets/freya.jpg",
+    imagen: "/media/client-pets/freya.webp",
+    isShowing: false,
     cliente: "Luis Simón",
     proximaCita: "2025-03-06",
   },
@@ -31,7 +34,8 @@ let clientes = [
     isEditing: false,
     mascota: "Brunelleschi",
     especie: "gato",
-    imagen: "/media/client-pets/brunelleschi.jpg",
+    imagen: "/media/client-pets/brunelleschi.webp",
+    isShowing: false,
     cliente: "Eugenio Drosdov",
     proximaCita: "2025-03-06",
   },
@@ -74,7 +78,6 @@ const clientFormSection = document.getElementById("info-form");
 
 const clientFormBox = document.createElement("div");
 clientFormBox.classList.add("form-box");
-
 
 //TÍTULO FORM
 
@@ -196,12 +199,30 @@ const renderClients = () => {
   container.innerHTML = "";
   clientes.forEach((client) => {
     const clientCard = document.createElement("div");
+    clientCard.classList.add("client-card");
 
     const petName = document.createElement("h2");
     petName.textContent = `${client.mascota}`;
 
     const petImg = document.createElement("img");
     petImg.setAttribute("src", client.imagen);
+    petImg.classList.add("hidden");
+    
+    const btnShowImg = document.createElement("button");
+    btnShowImg.type = "button";
+    btnShowImg.textContent = "Mostrar Imagen";
+
+    btnShowImg.addEventListener("click", () => {
+      client.isShowing = !client.isShowing;
+      
+      if (!client.isShowing) {
+        petImg.classList.remove("hidden");
+        btnShowImg.textContent = "Ocultar Imagen";
+      } else { 
+        petImg.classList.add("hidden");
+        btnShowImg.textContent = "Mostrar Imagen";
+      }
+    });
 
     const petSpecies = document.createElement("p");
     petSpecies.textContent = `Especie: ${client.especie}`;
@@ -232,6 +253,7 @@ const renderClients = () => {
 
     clientCard.append(
       petName,
+      btnShowImg,
       petImg,
       petSpecies,
       clientName,
@@ -250,7 +272,7 @@ const renderClients = () => {
       species.value = client.especie;
 
       const nextDate = document.createElement("input");
-      nextDate.type = "date"
+      nextDate.type = "date";
       nextDate.id = `edit-date-${client.id}`;
       nextDate.value = client.proximaCita;
 
@@ -266,7 +288,7 @@ const renderClients = () => {
         editClient(client.id, {
           cliente: input.value,
           especie: species.value,
-          proximaCita: nextDate.value
+          proximaCita: nextDate.value,
         });
         event.target.reset();
       });

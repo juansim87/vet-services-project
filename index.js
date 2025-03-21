@@ -53,7 +53,7 @@ titleBox.classList.add("title-box");
 const title = document.createElement("h1");
 title.textContent = "Pet It";
 title.style.fontSize = "60px";
-// title.style.fontFamily = "";
+
 const titleImgBox = document.createElement("div");
 titleImgBox.classList.add("title-img");
 
@@ -74,6 +74,7 @@ const clientFormSection = document.getElementById("info-form");
 
 const clientFormBox = document.createElement("div");
 clientFormBox.classList.add("form-box");
+
 
 //TÍTULO FORM
 
@@ -167,8 +168,13 @@ clientEmail.append(clientEmailLabel, clientEmailInput);
 //BOTÓN SUBMIT
 
 const btnSubmit = document.createElement("button");
+btnSubmit.type = "submit";
 btnSubmit.textContent = "Registrarse";
 btnSubmit.classList.add("btn");
+
+// btnSubmit.addEventListener(event => {
+//   event.preventDefault();
+// })
 
 // btnSubmit.addEventListener("click", () => {
 

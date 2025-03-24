@@ -4,8 +4,11 @@ let clientes = [
     isEditing: false,
     mascota: "Atapuerco",
     especie: "cerdo",
-    imagen: "/media/client-pets/atapuerco.jpg",
+    raza: "vietnamita",
+    imagen: "/media/client-pets/atapuerco.webp",
+    isShowing: false,
     cliente: "Juan Simón",
+    email: "juan.simon@pet-it.com",
     proximaCita: "2025-03-06",
   },
   {
@@ -13,8 +16,11 @@ let clientes = [
     isEditing: false,
     mascota: "Piticli",
     especie: "loro",
-    imagen: "/media/client-pets/piticli.jpg",
+    raza: "",
+    imagen: "/media/client-pets/piticli.webp",
+    isShowing: false,
     cliente: "Luis Fury",
+    email: "fury.lopez@pet-it.com",
     proximaCita: "2025-03-06",
   },
   {
@@ -22,8 +28,11 @@ let clientes = [
     isEditing: false,
     mascota: "Freya",
     especie: "perro",
-    imagen: "/media/client-pets/freya.jpg",
+    raza: "",
+    imagen: "/media/client-pets/freya.webp",
+    isShowing: false,
     cliente: "Luis Simón",
+    email: "luis.simon@pet-it.com",
     proximaCita: "2025-03-06",
   },
   {
@@ -31,8 +40,11 @@ let clientes = [
     isEditing: false,
     mascota: "Brunelleschi",
     especie: "gato",
-    imagen: "/media/client-pets/brunelleschi.jpg",
+    raza: "",
+    imagen: "/media/client-pets/brunelleschi.webp",
+    isShowing: false,
     cliente: "Eugenio Drosdov",
+    email: "far.drosdov@pet-it.com",
     proximaCita: "2025-03-06",
   },
 ];
@@ -53,12 +65,12 @@ titleBox.classList.add("title-box");
 const title = document.createElement("h1");
 title.textContent = "Pet It";
 title.style.fontSize = "60px";
-// title.style.fontFamily = "";
+
 const titleImgBox = document.createElement("div");
 titleImgBox.classList.add("title-img");
 
 const titleImg = document.createElement("img");
-titleImg.setAttribute("src", "/media/paws-icon.webp");
+titleImg.src = "/media/paws-icon.webp";
 
 titleImgBox.append(titleImg);
 
@@ -83,20 +95,20 @@ formTitle.textContent = "Queremos conocerte";
 //FORM
 
 const clientForm = document.createElement("form");
-clientForm.classList.add("form");
+clientFormBox.id = "create-client-form";
 
 //NOMBRE CLIENTE
 const clientNameBox = document.createElement("div");
 clientNameBox.classList.add("form-item");
 
 const clientNameLabel = document.createElement("label");
-clientNameLabel.setAttribute("for", "client-name");
+clientNameLabel.for = "client-name";
 clientNameLabel.textContent = "Nombre y apellidos: ";
 
 const clientNameInput = document.createElement("input");
-clientNameInput.setAttribute("id", "client-name");
-clientNameInput.setAttribute("type", "text");
-clientNameInput.setAttribute("placeholder", "Ej: John Doe");
+clientNameInput.id = "client-name";
+clientNameInput.type = "text";
+clientNameInput.placeholder = "Ej: John Doe";
 
 clientNameBox.append(clientNameLabel, clientNameInput);
 
@@ -106,13 +118,13 @@ const petNameBox = document.createElement("div");
 petNameBox.classList.add("form-item");
 
 const petNameLabel = document.createElement("label");
-petNameLabel.setAttribute("for", "pet-name");
+petNameLabel.for = "pet-name";
 petNameLabel.textContent = "Nombre de mascota: ";
 
 const petNameInput = document.createElement("input");
-petNameInput.setAttribute("id", "pet-name");
-petNameInput.setAttribute("type", "text");
-petNameInput.setAttribute("placeholder", "Ej: Micifús");
+petNameInput.id = "pet-name";
+petNameInput.type = "text";
+petNameInput.placeholder = "Ej: Micifús";
 
 petNameBox.append(petNameLabel, petNameInput);
 
@@ -122,13 +134,13 @@ const petSpeciesBox = document.createElement("div");
 petSpeciesBox.classList.add("form-item");
 
 const petSpeciesLabel = document.createElement("label");
-petSpeciesLabel.setAttribute("for", "pet-species");
+petSpeciesLabel.for = "pet-species";
 petSpeciesLabel.textContent = "Especie: ";
 
 const petSpeciesInput = document.createElement("input");
-petSpeciesInput.setAttribute("id", "pet-species");
-petSpeciesInput.setAttribute("type", "text");
-petSpeciesInput.setAttribute("placeholder", "Ej: Gato");
+petSpeciesInput.id = "pet-species";
+petSpeciesInput.type = "text";
+petSpeciesInput.placeholder = "Ej: Gato";
 
 petSpeciesBox.append(petSpeciesLabel, petSpeciesInput);
 
@@ -138,13 +150,13 @@ const petBreedBox = document.createElement("div");
 petBreedBox.classList.add("form-item");
 
 const petBreedLabel = document.createElement("label");
-petBreedLabel.setAttribute("for", "pet-breed");
+petBreedLabel.for = "pet-breed";
 petBreedLabel.textContent = "Raza: ";
 
 const petBreedInput = document.createElement("input");
 petBreedInput.id = "pet-breed";
-petBreedInput.setAttribute("type", "text");
-petBreedInput.setAttribute("placeholder", "Ej: Callejero");
+petBreedInput.type = "text";
+petBreedInput.placeholder = "Ej: Callejero";
 
 petBreedBox.append(petBreedLabel, petBreedInput);
 
@@ -154,25 +166,56 @@ const clientEmail = document.createElement("div");
 clientEmail.classList.add("form-item");
 
 const clientEmailLabel = document.createElement("label");
-clientEmailLabel.setAttribute("for", "client-email");
+clientEmailLabel.for = "client-email";
 clientEmailLabel.textContent = "Email: ";
 
 const clientEmailInput = document.createElement("input");
-clientEmailInput.setAttribute("id", "client-email");
-clientEmailInput.setAttribute("type", "email");
-clientEmailInput.setAttribute("placeholder", "Ej: juan.simon@mascotero.com");
+clientEmailInput.id = "client-email";
+clientEmailInput.type = "email";
+clientEmailInput.placeholder = "Ej: juan.simon@mascotero.com";
 
 clientEmail.append(clientEmailLabel, clientEmailInput);
 
 //BOTÓN SUBMIT
 
-const btnSubmit = document.createElement("button");
-btnSubmit.textContent = "Registrarse";
-btnSubmit.classList.add("btn");
+const submitCreateNewClient = (event) => {
+  event.preventDefault();
 
-// btnSubmit.addEventListener("click", () => {
+  const clientName = document.querySelector("#client-name");
+  const petName = document.querySelector("#pet-name");
+  const petSpecies = document.querySelector("#pet-species");
+  const petBreed = document.querySelector("#pet-breed");
+  const clientMail = document.querySelector("#client-email");
 
-// })
+  const newClient = {
+    id: new Date().getTime(),
+    mascota: petName.value,
+    especie: petSpecies.value,
+    raza: petBreed.value,
+    imagen: "/media/client-pets/pet-icon.png",
+    isShowing: false,
+    cliente: clientName.value,
+    email: clientMail.value,
+    proximaCita: "24-04-2025",
+  };
+
+  clientes.unshift(newClient);
+
+  renderClients();
+};
+
+const deleteClient = (clientId) => {
+  console.log("cliente", clientId);
+  // clientes = clientes.filter(client => client.id !== clientId);
+  renderClients();
+}
+
+const btnSubmitRegister = document.createElement("button");
+btnSubmitRegister.type = "submit";
+btnSubmitRegister.textContent = "Registrarse";
+btnSubmitRegister.classList.add("btn");
+
+btnSubmitRegister.addEventListener("click", submitCreateNewClient);
 
 clientForm.append(
   clientNameBox,
@@ -180,32 +223,67 @@ clientForm.append(
   petSpeciesBox,
   petBreedBox,
   clientEmail,
-  btnSubmit
+  btnSubmitRegister
 );
+
 clientFormBox.append(formTitle, clientForm);
+
 clientFormSection.appendChild(clientFormBox);
 
+console.log(clientFormBox);
+
 const renderClients = () => {
-  const container = document.getElementById("element");
+  const container = document.getElementById("client-database");
   container.innerHTML = "";
   clientes.forEach((client) => {
     const clientCard = document.createElement("div");
+    clientCard.classList.add("client-card");
 
     const petName = document.createElement("h2");
     petName.textContent = `${client.mascota}`;
 
     const petImg = document.createElement("img");
     petImg.setAttribute("src", client.imagen);
+    petImg.classList.add("hidden");
+
+    /**
+     * Problemas con la lógica de este botón. Al final optamos por toggle para facilitarla.
+     */
+
+    const btnShowImg = document.createElement("button");
+    btnShowImg.type = "button";
+    btnShowImg.textContent = "Mostrar Imagen";
+
+    btnShowImg.addEventListener("click", () => {
+      client.isShowing = !client.isShowing;
+
+      petImg.classList.toggle("hidden");
+
+      if (!client.isShowing) {
+        btnShowImg.textContent = "Mostrar Imagen";
+      } else {
+        btnShowImg.textContent = "Ocultar Imagen";
+      }
+    });
 
     const petSpecies = document.createElement("p");
     petSpecies.textContent = `Especie: ${client.especie}`;
 
-    const proximaCita = document.createElement("p");
-    proximaCita.textContent = `Próxima cita: ${client.proximaCita}`;
+    const petBreed = document.createElement("p");
+    if (client.raza !== "") {
+      petBreed.textContent = `Raza: ${client.raza}`;
+    } else {
+      petBreed.classList.add("hidden");
+    }
+
+    const nextDate = document.createElement("p");
+    nextDate.textContent = `Próxima cita: ${client.proximaCita}`;
 
     const clientName = document.createElement("p");
-
     clientName.textContent = `Cliente: ${client.cliente}`;
+
+    const clientEmail = document.createElement("p");
+    clientEmail.textContent = `Email: ${client.email}`;
 
     const btnEdit = document.createElement("button");
     btnEdit.textContent = "Editar cliente";
@@ -214,58 +292,88 @@ const renderClients = () => {
       renderClients();
     });
 
-    // {
-    //   id: 1,
-    //   isEditing: false,
-    //   mascota: "Atapuerco",
-    //   especie: "cerdo",
-    //   imagen: "/media/client-pets/atapuerco.jpg",
-    //   cliente: "Juan Simón",
-    //   proximaCita: "",
-    // },
+    const btnDelete = document.createElement("button");
+    btnDelete.textContent = "Eliminar ficha";
+    btnDelete.addEventListener("click", deleteClient);
 
     clientCard.append(
       petName,
+      btnShowImg,
       petImg,
       petSpecies,
+      petBreed,
       clientName,
-      proximaCita,
-      btnEdit
+      clientEmail,
+      nextDate,
+      btnEdit,
+      btnDelete
     );
 
     if (client.isEditing) {
       const form = document.createElement("form");
-      const input = document.createElement("input");
-      input.id = `edit-cliente-${client.id}`;
-      input.value = client.cliente;
 
-      const species = document.createElement("input");
-      species.id = `edit-species-${client.id}`;
-      species.value = client.especie;
+      const clientNameBox = document.createElement("div");
 
+      const clientNameLabel = document.createElement("label");
+      clientNameLabel.textContent = "Corregir nombre de cliente";
+
+      const clientName = document.createElement("input");
+      clientName.id = `edit-cliente-${client.id}`;
+      clientName.value = client.cliente;
+      
+      clientNameBox.append(clientNameLabel, clientName);
+
+
+      const speciesBox = document.createElement("div");
+
+      const petSpeciesLabel = document.createElement("label");
+      petSpeciesLabel.textContent = "Corregir especie:";
+
+      const petSpecies = document.createElement("input");
+      petSpecies.id = `edit-species-${client.id}`;
+      petSpecies.value = client.especie;
+
+      speciesBox.append(petSpeciesLabel, petSpecies);
+
+      const breedBox = document.createElement("div");
+      const petBreedLabel = document.createElement("label");
+      petBreedLabel.textContent = "Corregir raza:";
+
+      const petBreed = document.createElement("input");
+      petBreed.id = `edit-breed-${client.id}`;
+      petBreed.value = client.raza;
+
+      breedBox.append(petBreedLabel, petBreed);
+
+      const dateBox = document.createElement("div");
+
+      const nextDateLabel = document.createElement("label");
+      nextDateLabel.textContent = "Modificar próxima cita: ";
+      
       const nextDate = document.createElement("input");
-      nextDate.type = "date"
+      nextDate.type = "date";
       nextDate.id = `edit-date-${client.id}`;
       nextDate.value = client.proximaCita;
 
-      const btnSubmit = document.createElement("button");
-      btnSubmit.type = "submit";
-      btnSubmit.textContent = "Editar";
-      form.appendChild(btnSubmit);
+      dateBox.append(nextDateLabel, nextDate)
 
+      const btnSubmitEdit = document.createElement("button");
+      btnSubmitEdit.type = "submit";
+      btnSubmitEdit.textContent = "Editar";
+      
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         console.log("submit form");
 
         editClient(client.id, {
-          cliente: input.value,
-          especie: species.value,
-          proximaCita: nextDate.value
+          cliente: clientName.value,
+          especie: petSpecies.value,
+          proximaCita: nextDate.value,
         });
         event.target.reset();
       });
 
-      form.append(input, species, nextDate);
+      form.append(clientNameBox, speciesBox, breedBox, dateBox, btnSubmitEdit);
 
       clientCard.appendChild(form);
     }
@@ -286,3 +394,5 @@ const editClient = (id, fields) => {
   }
   renderClients();
 };
+
+

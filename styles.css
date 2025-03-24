@@ -104,6 +104,28 @@
     transition: background-color 0.3s;
 }
 
+
 .reset-button .boton-reset:hover {
-    background-color: #ff4444;
+    background-color: #ff4444;  }
+
+.title-img img {
+    width: 100%;
+}
+
+#client-database {
+    display: flex;
+}
+
+.client-card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 16px;
+    gap: 4px;
+}
+
+.hidden {
+    display: none;
 }

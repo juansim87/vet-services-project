@@ -207,12 +207,11 @@ function crearBotonReset() {
 
   contenedorBotonReset.appendChild(botonReset);
 
-  const contenedorPrincipal = document.getElementById("servises");
+  const contenedorPrincipal = document.getElementById("services");
   contenedorPrincipal.after(contenedorBotonReset);
 }
 
 crearBotonReset();
-
 botonFiltro();      
 crearLinks();      
 renderClinicas();   

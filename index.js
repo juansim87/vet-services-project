@@ -1,55 +1,24 @@
-// let clientes = [
-//   {
-//     id: 1,
-//     isEditing: false,
-//     mascota: "Atapuerco",
-//     especie: "cerdo",
-//     raza: "vietnamita",
-//     imagen: "/media/client-pets/atapuerco.webp",
-//     isShowing: false,
-//     cliente: "Juan Simón",
-//     email: "juan.simon@pet-it.com",
-//     proximaCita: "2025-03-06",
-//   },
-//   {
-//     id: 2,
-//     isEditing: false,
-//     mascota: "Piticli",
-//     especie: "loro",
-//     raza: "",
-//     imagen: "/media/client-pets/piticli.webp",
-//     isShowing: false,
-//     cliente: "Luis Fury",
-//     email: "fury.lopez@pet-it.com",
-//     proximaCita: "2025-03-06",
-//   },
-//   {
-//     id: 3,
-//     isEditing: false,
-//     mascota: "Freya",
-//     especie: "perro",
-//     raza: "",
-//     imagen: "/media/client-pets/freya.webp",
-//     isShowing: false,
-//     cliente: "Luis Simón",
-//     email: "luis.simon@pet-it.com",
-//     proximaCita: "2025-03-06",
-//   },
-//   {
-//     id: 4,
-//     isEditing: false,
-//     mascota: "Brunelleschi",
-//     especie: "gato",
-//     raza: "",
-//     imagen: "/media/client-pets/brunelleschi.webp",
-//     isShowing: false,
-//     cliente: "Eugenio Drosdov",
-//     email: "far.drosdov@pet-it.com",
-//     proximaCita: "2025-03-06",
-//   },
-// ];
+let appData = clientes;
 
-//NAV
+const CLIENT_DATABASE_TEMPLATE = {
+  clientes: []
+};
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const clientDatabase = getDataFromStorage("client-database");
+
+  if (!clientDatabase) {
+    saveDataInStorage ("client-database", CLIENT_DATABASE_TEMPLATE);
+  }
+  appData = getDataFromStorage("client-database");
+  
+  console.log("Valor inicial de App Data", appData);
+});
+
+
+
+
 
 const navContent = document.querySelector(".nav-content");
 
@@ -172,41 +141,13 @@ clientEmailLabel.textContent = "Email: ";
 const clientEmailInput = document.createElement("input");
 clientEmailInput.id = "client-email";
 clientEmailInput.type = "email";
-clientEmailInput.placeholder = "Ej: juan.simon@mascotero.com";
+clientEmailInput.placeholder = "Ej: juan.simon@pet-it.com";
 
 clientEmail.append(clientEmailLabel, clientEmailInput);
 
 
 
-
-
 //BOTÓN SUBMIT
-
-const submitCreateNewClient = (event) => {
-  event.preventDefault();
-
-  const clientName = document.querySelector("#client-name");
-  const petName = document.querySelector("#pet-name");
-  const petSpecies = document.querySelector("#pet-species");
-  const petBreed = document.querySelector("#pet-breed");
-  const clientMail = document.querySelector("#client-email");
-
-  const newClient = {
-    id: new Date().getTime(),
-    mascota: petName.value,
-    especie: petSpecies.value,
-    raza: petBreed.value,
-    imagen: "/media/client-pets/pet-icon.png",
-    isShowing: false,
-    cliente: clientName.value,
-    email: clientMail.value,
-    proximaCita: "24-04-2025",
-  };
-
-  clientes.unshift(newClient);
-
-  renderClients();
-};
 
 const btnSubmitRegister = document.createElement("button");
 btnSubmitRegister.type = "submit";
@@ -230,11 +171,6 @@ clientFormSection.appendChild(clientFormBox);
 
 console.log(clientFormBox);
 
-
-
-/**
- * 
- */
 
 
 renderClients();

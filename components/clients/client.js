@@ -1,4 +1,31 @@
-const renderClients = (clientData) => {
+
+const submitCreateNewClient = (event) => {
+  event.preventDefault();
+
+  const clientName = document.querySelector("#client-name");
+  const petName = document.querySelector("#pet-name");
+  const petSpecies = document.querySelector("#pet-species");
+  const petBreed = document.querySelector("#pet-breed");
+  const clientMail = document.querySelector("#client-email");
+
+  const newClient = {
+    id: new Date().getTime(),
+    mascota: petName.value,
+    especie: petSpecies.value,
+    raza: petBreed.value,
+    imagen: "/media/client-pets/pet-icon.png",
+    isShowing: false,
+    cliente: clientName.value,
+    email: clientMail.value,
+    proximaCita: "24-04-2025",
+  };
+
+  clientes.unshift(newClient);
+
+  renderClients();
+};
+
+const renderClients = () => {
     const container = document.getElementById("client-database");
     container.innerHTML = "";
     clientes.forEach((client) => {
@@ -12,8 +39,6 @@ const renderClients = (clientData) => {
       petImg.setAttribute("src", client.imagen);
       petImg.classList.add("hidden");
   
-  
-      
       /**
        * Problemas con la lógica de este botón. Al final optamos por toggle para facilitarla.
        */
@@ -63,10 +88,19 @@ const renderClients = (clientData) => {
   
       const btnDelete = document.createElement("button");
       btnDelete.textContent = "Eliminar ficha";
+      btnDelete.classList.add("btn-delete")
   
       btnDelete.addEventListener("click", () => {
-        console.log(clientData.id);
+        // console.log(client.id);
+
+        const filterClients = clientes.filter((client) => client !== client.id);
         
+        
+        console.log(filterClients);
+
+        // const clientFilter = clientes.filter((client) => client.id !== clientId);
+        // console.log(clientFilter);
+
       });
   
       clientCard.append(
@@ -135,7 +169,6 @@ const renderClients = (clientData) => {
   
         form.addEventListener("submit", (event) => {
           event.preventDefault();
-          console.log("submit form");
   
           editClient(client.id, {
             cliente: clientName.value,

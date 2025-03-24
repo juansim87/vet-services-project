@@ -48,6 +48,10 @@ nav {
     width: 100%;
 }
 
+#client-database {
+    display: flex;
+}
+
 .client-card {
     width: 300px;
     display: flex;

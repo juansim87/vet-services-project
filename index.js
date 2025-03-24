@@ -233,7 +233,7 @@ clientFormSection.appendChild(clientFormBox);
 console.log(clientFormBox);
 
 const renderClients = () => {
-  const container = document.getElementById("element");
+  const container = document.getElementById("client-database");
   container.innerHTML = "";
   clientes.forEach((client) => {
     const clientCard = document.createElement("div");
@@ -313,19 +313,26 @@ const renderClients = () => {
       const form = document.createElement("form");
 
       const clientNameBox = document.createElement("div");
+
       const clientNameLabel = document.createElement("label");
       clientNameLabel.textContent = "Corregir nombre de cliente";
+
       const clientName = document.createElement("input");
       clientName.id = `edit-cliente-${client.id}`;
       clientName.value = client.cliente;
-      clientNameBox.append(clientNameLabel, clientNameInput);
+      
+      clientNameBox.append(clientNameLabel, clientName);
+
 
       const speciesBox = document.createElement("div");
+
       const petSpeciesLabel = document.createElement("label");
       petSpeciesLabel.textContent = "Corregir especie:";
+
       const petSpecies = document.createElement("input");
       petSpecies.id = `edit-species-${client.id}`;
       petSpecies.value = client.especie;
+
       speciesBox.append(petSpeciesLabel, petSpecies);
 
       const breedBox = document.createElement("div");

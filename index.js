@@ -1,160 +1,67 @@
 let clientes = [
   {
+    id: 1,
+    isEditing: false,
     mascota: "Atapuerco",
     especie: "cerdo",
-<<<<<<< HEAD
-    imagen: "url()",
-    cliente: "Juan Simón",
-    "próxima cita": "",
-=======
     raza: "vietnamita",
     imagen: "/media/client-pets/atapuerco.webp",
     isShowing: false,
     cliente: "Juan Simón",
     email: "juan.simon@pet-it.com",
     proximaCita: "2025-03-06",
->>>>>>> fe3e1c8dd7a3d8a10ed3be36ea1c4fd85a630330
   },
   {
+    id: 2,
+    isEditing: false,
     mascota: "Piticli",
     especie: "loro",
-<<<<<<< HEAD
-    imagen: "url()",
-    cliente: "Luis Fury",
-    "próxima cita": "",
-=======
     raza: "",
     imagen: "/media/client-pets/piticli.webp",
     isShowing: false,
     cliente: "Luis Fury",
     email: "fury.lopez@pet-it.com",
     proximaCita: "2025-03-06",
->>>>>>> fe3e1c8dd7a3d8a10ed3be36ea1c4fd85a630330
   },
   {
+    id: 3,
+    isEditing: false,
     mascota: "Freya",
     especie: "perro",
-<<<<<<< HEAD
-    imagen: "url()",
-    cliente: "Luis Simón",
-    "próxima cita": "",
-=======
     raza: "",
     imagen: "/media/client-pets/freya.webp",
     isShowing: false,
     cliente: "Luis Simón",
     email: "luis.simon@pet-it.com",
     proximaCita: "2025-03-06",
->>>>>>> fe3e1c8dd7a3d8a10ed3be36ea1c4fd85a630330
   },
   {
+    id: 4,
+    isEditing: false,
     mascota: "Brunelleschi",
     especie: "gato",
-<<<<<<< HEAD
-    imagen: "url()",
-    cliente: "Eugenio Drosdov",
-    "próxima cita": "",
-=======
     raza: "",
     imagen: "/media/client-pets/brunelleschi.webp",
     isShowing: false,
     cliente: "Eugenio Drosdov",
     email: "far.drosdov@pet-it.com",
     proximaCita: "2025-03-06",
->>>>>>> fe3e1c8dd7a3d8a10ed3be36ea1c4fd85a630330
   },
 ];
 
-let clinicas = [
-  {
-    nombreCentro: "Huellas Felices",
-    servicios: ["veterinario", "peluqueria canina"],
-    localidad: "Madrid",
-  },
-  {
-    nombreCentro: "Amigos Peludos",
-    servicios: ["hotel", "cuidador", "veterinario"],
-    localidad: "Barcelona",
-  },
-  {
-    nombreCentro: "Cola y Bigote",
-    servicios: ["peluqueria canina", "cuidador"],
-    localidad: "Valencia",
-  },
-  {
-    nombreCentro: "Patitas Sanas",
-    servicios: ["veterinario"],
-    localidad: "Sevilla",
-  },
-  {
-    nombreCentro: "Mimos Vet",
-    servicios: ["hotel", "cuidador"],
-    localidad: "Bilbao",
-  },
-  {
-    nombreCentro: "Cuatro Patas",
-    servicios: ["veterinario", "cuidador", "peluqueria canina"],
-    localidad: "Zaragoza",
-  },
-  {
-    nombreCentro: "Pelo Suelto",
-    servicios: ["peluqueria canina", "hotel"],
-    localidad: "Málaga",
-  },
-  {
-    nombreCentro: "La Caseta",
-    servicios: ["hotel"],
-    localidad: "A Coruña",
-  },
-  {
-    nombreCentro: "Vet&Love",
-    servicios: ["veterinario", "cuidador"],
-    localidad: "Granada",
-  },
-  {
-    nombreCentro: "Patas Urbanas",
-    servicios: ["cuidador", "peluqueria canina"],
-    localidad: "Madrid",
-  }
-];
+//NAV
 
-const links = [
-  { 
-    texto: "Veterinarios",
-    href: "#", 
-    servicio: "veterinario" 
-  },
-  { 
-    texto: "Peluquería Canina", 
-    href: "#", 
-    servicio: "peluqueria canina" 
-  },
-  { 
-    texto: "Hoteles para mascotas", 
-    href: "#", 
-    servicio: "hotel" 
-  },
-  { texto: "Cuidadores", 
-    href: "#", 
-    servicio: "cuidador" 
-  }
-];
+const navContent = document.querySelector(".nav-content");
 
-let filtroActualLocalidad = "todas";
-let filtroActualServicio = null;
+//SECCIÓN HERO
+const hero = document.getElementById("hero");
+hero.style.setProperty("background-image", "url(/media/mascotas.webp)");
+hero.style.setProperty("background-repeat", "no-repeat");
+hero.style.setProperty("background-size", "cover");
 
-//TARJETAS CLINICAS
+const titleBox = document.createElement("div");
+titleBox.classList.add("title-box");
 
-<<<<<<< HEAD
-function renderClinicas(localidadSeleccionada = "todas", servicioSeleccionado = null) {
-  const clinicaList = document.getElementById("premises");
-    clinicaList.style.display = "flex";
-    clinicaList.style.flexDirection = "column";
-
-  // Eliminar solo las tarjetas de clínicas
-  const tarjetasClinicas = clinicaList.querySelectorAll(".card-clinica");
-  tarjetasClinicas.forEach((tarjeta) => tarjeta.remove());
-=======
 const title = document.createElement("h1");
 title.textContent = "Pet It";
 title.style.fontSize = "60px";
@@ -164,80 +71,36 @@ titleImgBox.classList.add("title-img");
 
 const titleImg = document.createElement("img");
 titleImg.src = "/media/paws-icon.webp";
->>>>>>> fe3e1c8dd7a3d8a10ed3be36ea1c4fd85a630330
 
-  let clinicasFiltradas = clinicas;
+titleImgBox.append(titleImg);
 
-  // Filtro localidad
-  if (localidadSeleccionada !== "todas") {
-    clinicasFiltradas = clinicasFiltradas.filter(
-      (clinica) => clinica.localidad === localidadSeleccionada
-    ); console.log("Filtro  localidad aplicado");
-    
-  }
-  //Fitro servicio
-  if (servicioSeleccionado) {
-    clinicasFiltradas = clinicasFiltradas.filter(
-      (clinica) => clinica.servicios.includes(servicioSeleccionado)
-    ); console.log("Filtro servicios aplicado")
-  }
+titleBox.append(title, titleImgBox);
 
-  clinicasFiltradas.forEach((clinica) => {
-    const tarjetaClinica = document.createElement("div");
-    tarjetaClinica.classList.add("card-clinica");
+hero.append(titleBox);
 
-    const nombreClinica = document.createElement("h2");
-    nombreClinica.textContent = clinica.nombreCentro;
+//SECCIÓN DE FORM
 
-    const serviciosClinica = document.createElement("p");
-    serviciosClinica.textContent = `Servicios: ${clinica.servicios.join(", ")}`;
+const clientFormSection = document.getElementById("info-form");
 
-    const localidadClinica = document.createElement("p");
-    localidadClinica.textContent = `Localidad: ${clinica.localidad}`;
+//CAJA DE FORM
 
-    tarjetaClinica.append(nombreClinica, serviciosClinica, localidadClinica);
-    clinicaList.appendChild(tarjetaClinica);
-  });
-}
+const clientFormBox = document.createElement("div");
+clientFormBox.classList.add("form-box");
 
-function botonFiltro() {
-  const contenedorFiltro = document.createElement("div");
-  contenedorFiltro.classList.add("filter-button");
+//TÍTULO FORM
 
-  const label = document.createElement("label");
-  label.textContent = "Filtrar por localidad:";
-  label.setAttribute("for", "filtroLocalidad");
+const formTitle = document.createElement("h2");
+formTitle.textContent = "Queremos conocerte";
 
-  const select = document.createElement("select");
-  select.setAttribute("id", "filtroLocalidad");
+//FORM
 
-<<<<<<< HEAD
-  const opcionTodas = document.createElement("option");
-  opcionTodas.value = "todas";
-  opcionTodas.textContent = "Todas las localidades";
-  select.appendChild(opcionTodas);
-=======
 const clientForm = document.createElement("form");
 clientFormBox.id = "create-client-form";
->>>>>>> fe3e1c8dd7a3d8a10ed3be36ea1c4fd85a630330
 
-  const localidadesUnicas = [...new Set(clinicas.map((clinica) => clinica.localidad))];
-  localidadesUnicas.forEach((localidad) => {
-    const opcion = document.createElement("option");
-    opcion.value = localidad;
-    opcion.textContent = localidad;
-    select.appendChild(opcion);
-  });
+//NOMBRE CLIENTE
+const clientNameBox = document.createElement("div");
+clientNameBox.classList.add("form-item");
 
-<<<<<<< HEAD
-  select.addEventListener("change", (e) => {
-    filtroActualLocalidad = e.target.value;
-    renderClinicas(filtroActualLocalidad, filtroActualServicio);
-  });
-
-  contenedorFiltro.appendChild(label);
-  contenedorFiltro.appendChild(select);
-=======
 const clientNameLabel = document.createElement("label");
 clientNameLabel.for = "client-name";
 clientNameLabel.textContent = "Nombre y apellidos: ";
@@ -246,37 +109,14 @@ const clientNameInput = document.createElement("input");
 clientNameInput.id = "client-name";
 clientNameInput.type = "text";
 clientNameInput.placeholder = "Ej: John Doe";
->>>>>>> fe3e1c8dd7a3d8a10ed3be36ea1c4fd85a630330
 
-  const contenedorPrincipal = document.getElementById("premises");
-  contenedorPrincipal.before(contenedorFiltro);
-}
+clientNameBox.append(clientNameLabel, clientNameInput);
 
-function crearLinks() {
-  const contenedorLinks = document.createElement("div");
-  contenedorLinks.classList.add("services-container");
-  contenedorLinks.setAttribute("id", "menuLinks");
+//NOMBRE MASCOTA
 
-  links.forEach((linkInfo) => {
-    const tarjetaProfesional = document.createElement("div");
-    tarjetaProfesional.classList.add("card-service");
+const petNameBox = document.createElement("div");
+petNameBox.classList.add("form-item");
 
-<<<<<<< HEAD
-    const enlaceProfesional = document.createElement("a");
-    enlaceProfesional.textContent = linkInfo.texto;
-    enlaceProfesional.setAttribute("href", "#");
-    enlaceProfesional.classList.add("enlace-profesional");
-    enlaceProfesional.dataset.servicio = linkInfo.servicio;
-
-    enlaceProfesional.addEventListener("click", (e) => {
-      e.preventDefault();
-      filtroActualServicio = e.target.dataset.servicio;
-      renderClinicas(filtroActualLocalidad, filtroActualServicio);
-    });
-
-    tarjetaProfesional.appendChild(enlaceProfesional);
-    contenedorLinks.appendChild(tarjetaProfesional);
-=======
 const petNameLabel = document.createElement("label");
 petNameLabel.for = "pet-name";
 petNameLabel.textContent = "Nombre de mascota: ";
@@ -539,44 +379,11 @@ const renderClients = () => {
     }
 
     container.append(clientCard);
->>>>>>> fe3e1c8dd7a3d8a10ed3be36ea1c4fd85a630330
   });
+};
 
-  const seccionServicios = document.getElementById("premises");
-  if (seccionServicios) {
-    seccionServicios.appendChild(contenedorLinks);
-  } 
-}
+renderClients();
 
-<<<<<<< HEAD
-function crearBotonReset() {
-  const contenedorBotonReset = document.createElement("div");
-  contenedorBotonReset.classList.add("reset-button");
-
-  const botonReset = document.createElement("button");
-  botonReset.textContent = "Resetear Filtros";
-  botonReset.classList.add("boton-reset");
-
-  
-  botonReset.addEventListener("click", () => {
-    filtroActualLocalidad = "todas";
-    filtroActualServicio = null;
-    document.getElementById("filtroLocalidad").value = "todas"; 
-    renderClinicas(filtroActualLocalidad, filtroActualServicio); 
-  });
-
-  contenedorBotonReset.appendChild(botonReset);
-
-  const contenedorPrincipal = document.getElementById("premises");
-  contenedorPrincipal.after(contenedorBotonReset);
-}
-
-crearBotonReset();
-
-botonFiltro();      
-crearLinks();      
-renderClinicas();   
-=======
 const editClient = (id, fields) => {
   const client = clientes.find((cliente) => cliente.id === id);
   if (client) {
@@ -589,4 +396,3 @@ const editClient = (id, fields) => {
 };
 
 
->>>>>>> fe3e1c8dd7a3d8a10ed3be36ea1c4fd85a630330

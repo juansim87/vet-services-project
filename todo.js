@@ -1,33 +1,3 @@
-let clientes = [
-  {
-    mascota: "Atapuerco",
-    especie: "cerdo",
-    imagen: "url()",
-    cliente: "Juan Simón",
-    "próxima cita": "",
-  },
-  {
-    mascota: "Piticli",
-    especie: "loro",
-    imagen: "url()",
-    cliente: "Luis Fury",
-    "próxima cita": "",
-  },
-  {
-    mascota: "Freya",
-    especie: "perro",
-    imagen: "url()",
-    cliente: "Luis Simón",
-    "próxima cita": "",
-  },
-  {
-    mascota: "Brunelleschi",
-    especie: "gato",
-    imagen: "url()",
-    cliente: "Eugenio Drosdov",
-    "próxima cita": "",
-  },
-];
 
 let clinicas = [
   {
@@ -110,7 +80,7 @@ let filtroActualServicio = null;
 //TARJETAS CLINICAS
 
 function renderClinicas(localidadSeleccionada = "todas", servicioSeleccionado = null) {
-  const clinicaList = document.getElementById("premises");
+  const clinicaList = document.getElementById("services");
     clinicaList.style.display = "flex";
     clinicaList.style.flexDirection = "column";
 
@@ -184,7 +154,7 @@ function botonFiltro() {
   contenedorFiltro.appendChild(label);
   contenedorFiltro.appendChild(select);
 
-  const contenedorPrincipal = document.getElementById("premises");
+  const contenedorPrincipal = document.getElementById("services");
   contenedorPrincipal.before(contenedorFiltro);
 }
 
@@ -213,7 +183,7 @@ function crearLinks() {
     contenedorLinks.appendChild(tarjetaProfesional);
   });
 
-  const seccionServicios = document.getElementById("premises");
+  const seccionServicios = document.getElementById("services");
   if (seccionServicios) {
     seccionServicios.appendChild(contenedorLinks);
   } 
@@ -237,12 +207,11 @@ function crearBotonReset() {
 
   contenedorBotonReset.appendChild(botonReset);
 
-  const contenedorPrincipal = document.getElementById("premises");
+  const contenedorPrincipal = document.getElementById("services");
   contenedorPrincipal.after(contenedorBotonReset);
 }
 
 crearBotonReset();
-
 botonFiltro();      
 crearLinks();      
 renderClinicas();   

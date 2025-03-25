@@ -422,6 +422,7 @@ let clinicas = [
     nombreCentro: "Mimos Vet",
     servicios: ["hotel", "cuidador"],
     localidad: "Bilbao",
+    
   },
   {
     nombreCentro: "Cuatro Patas",

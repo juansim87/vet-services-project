@@ -1,177 +1,170 @@
 let appData = clientes;
 
 const CLIENT_DATABASE_TEMPLATE = {
-  clientes: []
+  clientes: [],
 };
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const clientDatabase = getDataFromStorage("client-database");
 
   if (!clientDatabase) {
-    saveDataInStorage ("client-database", CLIENT_DATABASE_TEMPLATE);
+    saveDataInStorage("client-database", CLIENT_DATABASE_TEMPLATE);
   }
   appData = getDataFromStorage("client-database");
-  
+
   console.log("Valor inicial de App Data", appData);
 });
 
+const createElements = () => {
+   //SECCIÓN HERO
+  const hero = document.getElementById("hero");
+  hero.style.setProperty("background-image", "url(/media/mascotas.webp)");
+  hero.style.setProperty("background-repeat", "no-repeat");
+  hero.style.setProperty("background-size", "cover");
 
+  const titleBox = document.createElement("div");
+  titleBox.classList.add("title-box");
 
+  const title = document.createElement("h1");
+  title.textContent = "Pet It";
+  title.style.fontSize = "60px";
 
+  const titleImgBox = document.createElement("div");
+  titleImgBox.classList.add("title-img");
 
-const navContent = document.querySelector(".nav-content");
+  const titleImg = document.createElement("img");
+  titleImg.src = "/media/paws-icon.webp";
 
-//SECCIÓN HERO
-const hero = document.getElementById("hero");
-hero.style.setProperty("background-image", "url(/media/mascotas.webp)");
-hero.style.setProperty("background-repeat", "no-repeat");
-hero.style.setProperty("background-size", "cover");
+  titleImgBox.append(titleImg);
 
-const titleBox = document.createElement("div");
-titleBox.classList.add("title-box");
+  titleBox.append(title, titleImgBox);
 
-const title = document.createElement("h1");
-title.textContent = "Pet It";
-title.style.fontSize = "60px";
+  hero.append(titleBox);
 
-const titleImgBox = document.createElement("div");
-titleImgBox.classList.add("title-img");
+  //SECCIÓN DE FORM
 
-const titleImg = document.createElement("img");
-titleImg.src = "/media/paws-icon.webp";
+  const clientFormSection = document.getElementById("info-form");
 
-titleImgBox.append(titleImg);
+  //CAJA DE FORM
 
-titleBox.append(title, titleImgBox);
+  const clientFormBox = document.createElement("div");
+  clientFormBox.classList.add("form-box");
 
-hero.append(titleBox);
+  //TÍTULO FORM
 
-//SECCIÓN DE FORM
+  const formTitle = document.createElement("h2");
+  formTitle.textContent = "Queremos conocerte";
 
-const clientFormSection = document.getElementById("info-form");
+  //FORM
 
-//CAJA DE FORM
+  const clientForm = document.createElement("form");
+  clientFormBox.id = "create-client-form";
 
-const clientFormBox = document.createElement("div");
-clientFormBox.classList.add("form-box");
+  //NOMBRE CLIENTE
+  const clientNameBox = document.createElement("div");
+  clientNameBox.classList.add("form-item");
 
-//TÍTULO FORM
+  const clientNameLabel = document.createElement("label");
+  clientNameLabel.for = "client-name";
+  clientNameLabel.textContent = "Nombre y apellidos: ";
 
-const formTitle = document.createElement("h2");
-formTitle.textContent = "Queremos conocerte";
+  const clientNameInput = document.createElement("input");
+  clientNameInput.id = "client-name";
+  clientNameInput.type = "text";
+  clientNameInput.placeholder = "Ej: John Doe";
 
-//FORM
+  clientNameBox.append(clientNameLabel, clientNameInput);
 
-const clientForm = document.createElement("form");
-clientFormBox.id = "create-client-form";
+  //NOMBRE MASCOTA
 
-//NOMBRE CLIENTE
-const clientNameBox = document.createElement("div");
-clientNameBox.classList.add("form-item");
+  const petNameBox = document.createElement("div");
+  petNameBox.classList.add("form-item");
 
-const clientNameLabel = document.createElement("label");
-clientNameLabel.for = "client-name";
-clientNameLabel.textContent = "Nombre y apellidos: ";
+  const petNameLabel = document.createElement("label");
+  petNameLabel.for = "pet-name";
+  petNameLabel.textContent = "Nombre de mascota: ";
 
-const clientNameInput = document.createElement("input");
-clientNameInput.id = "client-name";
-clientNameInput.type = "text";
-clientNameInput.placeholder = "Ej: John Doe";
+  const petNameInput = document.createElement("input");
+  petNameInput.id = "pet-name";
+  petNameInput.type = "text";
+  petNameInput.placeholder = "Ej: Micifús";
 
-clientNameBox.append(clientNameLabel, clientNameInput);
+  petNameBox.append(petNameLabel, petNameInput);
 
-//NOMBRE MASCOTA
+  //ESPECIE MASCOTA
 
-const petNameBox = document.createElement("div");
-petNameBox.classList.add("form-item");
+  const petSpeciesBox = document.createElement("div");
+  petSpeciesBox.classList.add("form-item");
 
-const petNameLabel = document.createElement("label");
-petNameLabel.for = "pet-name";
-petNameLabel.textContent = "Nombre de mascota: ";
+  const petSpeciesLabel = document.createElement("label");
+  petSpeciesLabel.for = "pet-species";
+  petSpeciesLabel.textContent = "Especie: ";
 
-const petNameInput = document.createElement("input");
-petNameInput.id = "pet-name";
-petNameInput.type = "text";
-petNameInput.placeholder = "Ej: Micifús";
+  const petSpeciesInput = document.createElement("input");
+  petSpeciesInput.id = "pet-species";
+  petSpeciesInput.type = "text";
+  petSpeciesInput.placeholder = "Ej: Gato";
 
-petNameBox.append(petNameLabel, petNameInput);
+  petSpeciesBox.append(petSpeciesLabel, petSpeciesInput);
 
-//ESPECIE MASCOTA
+  //RAZA DE MASCOTA
 
-const petSpeciesBox = document.createElement("div");
-petSpeciesBox.classList.add("form-item");
+  const petBreedBox = document.createElement("div");
+  petBreedBox.classList.add("form-item");
 
-const petSpeciesLabel = document.createElement("label");
-petSpeciesLabel.for = "pet-species";
-petSpeciesLabel.textContent = "Especie: ";
+  const petBreedLabel = document.createElement("label");
+  petBreedLabel.for = "pet-breed";
+  petBreedLabel.textContent = "Raza: ";
 
-const petSpeciesInput = document.createElement("input");
-petSpeciesInput.id = "pet-species";
-petSpeciesInput.type = "text";
-petSpeciesInput.placeholder = "Ej: Gato";
+  const petBreedInput = document.createElement("input");
+  petBreedInput.id = "pet-breed";
+  petBreedInput.type = "text";
+  petBreedInput.placeholder = "Ej: Callejero";
 
-petSpeciesBox.append(petSpeciesLabel, petSpeciesInput);
+  petBreedBox.append(petBreedLabel, petBreedInput);
 
-//RAZA DE MASCOTA
+  //EMAIL
 
-const petBreedBox = document.createElement("div");
-petBreedBox.classList.add("form-item");
+  const clientEmail = document.createElement("div");
+  clientEmail.classList.add("form-item");
 
-const petBreedLabel = document.createElement("label");
-petBreedLabel.for = "pet-breed";
-petBreedLabel.textContent = "Raza: ";
+  const clientEmailLabel = document.createElement("label");
+  clientEmailLabel.for = "client-email";
+  clientEmailLabel.textContent = "Email: ";
 
-const petBreedInput = document.createElement("input");
-petBreedInput.id = "pet-breed";
-petBreedInput.type = "text";
-petBreedInput.placeholder = "Ej: Callejero";
+  const clientEmailInput = document.createElement("input");
+  clientEmailInput.id = "client-email";
+  clientEmailInput.type = "email";
+  clientEmailInput.placeholder = "Ej: juan.simon@pet-it.com";
 
-petBreedBox.append(petBreedLabel, petBreedInput);
+  clientEmail.append(clientEmailLabel, clientEmailInput);
 
-//EMAIL
+  //BOTÓN SUBMIT
 
-const clientEmail = document.createElement("div");
-clientEmail.classList.add("form-item");
+  const btnSubmitRegister = document.createElement("button");
+  btnSubmitRegister.type = "submit";
+  btnSubmitRegister.textContent = "Registrarse";
+  btnSubmitRegister.classList.add("btn");
 
-const clientEmailLabel = document.createElement("label");
-clientEmailLabel.for = "client-email";
-clientEmailLabel.textContent = "Email: ";
+  btnSubmitRegister.addEventListener("click", submitCreateNewClient);
 
-const clientEmailInput = document.createElement("input");
-clientEmailInput.id = "client-email";
-clientEmailInput.type = "email";
-clientEmailInput.placeholder = "Ej: juan.simon@pet-it.com";
+  clientForm.append(
+    clientNameBox,
+    petNameBox,
+    petSpeciesBox,
+    petBreedBox,
+    clientEmail,
+    btnSubmitRegister
+  );
 
-clientEmail.append(clientEmailLabel, clientEmailInput);
+  clientFormBox.append(formTitle, clientForm);
 
+  clientFormSection.appendChild(clientFormBox);
 
+  console.log(clientFormBox);
+};
 
-//BOTÓN SUBMIT
-
-const btnSubmitRegister = document.createElement("button");
-btnSubmitRegister.type = "submit";
-btnSubmitRegister.textContent = "Registrarse";
-btnSubmitRegister.classList.add("btn");
-
-btnSubmitRegister.addEventListener("click", submitCreateNewClient);
-
-clientForm.append(
-  clientNameBox,
-  petNameBox,
-  petSpeciesBox,
-  petBreedBox,
-  clientEmail,
-  btnSubmitRegister
-);
-
-clientFormBox.append(formTitle, clientForm);
-
-clientFormSection.appendChild(clientFormBox);
-
-console.log(clientFormBox);
-
-
+createElements();
 
 renderClients();
 
@@ -187,80 +180,23 @@ const editClient = (id, fields) => {
 };
 
 
-
-// let clinicas = [
-//   {
-//     nombreCentro: "Huellas Felices",
-//     servicios: ["veterinario", "peluqueria canina"],
-//     localidad: "Madrid",
-//   },
-//   {
-//     nombreCentro: "Amigos Peludos",
-//     servicios: ["hotel", "cuidador", "veterinario"],
-//     localidad: "Barcelona",
-//   },
-//   {
-//     nombreCentro: "Cola y Bigote",
-//     servicios: ["peluqueria canina", "cuidador"],
-//     localidad: "Valencia",
-//   },
-//   {
-//     nombreCentro: "Patitas Sanas",
-//     servicios: ["veterinario"],
-//     localidad: "Sevilla",
-//   },
-//   {
-//     nombreCentro: "Mimos Vet",
-//     servicios: ["hotel", "cuidador"],
-//     localidad: "Bilbao",
-//   },
-//   {
-//     nombreCentro: "Cuatro Patas",
-//     servicios: ["veterinario", "cuidador", "peluqueria canina"],
-//     localidad: "Zaragoza",
-//   },
-//   {
-//     nombreCentro: "Pelo Suelto",
-//     servicios: ["peluqueria canina", "hotel"],
-//     localidad: "Málaga",
-//   },
-//   {
-//     nombreCentro: "La Caseta",
-//     servicios: ["hotel"],
-//     localidad: "A Coruña",
-//   },
-//   {
-//     nombreCentro: "Vet&Love",
-//     servicios: ["veterinario", "cuidador"],
-//     localidad: "Granada",
-//   },
-//   {
-//     nombreCentro: "Patas Urbanas",
-//     servicios: ["cuidador", "peluqueria canina"],
-//     localidad: "Madrid",
-//   }
-// ];
-
 const links = [
-  { 
+  {
     texto: "Veterinarios",
-    href: "#", 
-    servicio: "veterinario" 
+    href: "#",
+    servicio: "veterinario",
   },
-  { 
-    texto: "Peluquería Canina", 
-    href: "#", 
-    servicio: "peluqueria canina" 
+  {
+    texto: "Peluquería Canina",
+    href: "#",
+    servicio: "peluqueria canina",
   },
-  { 
-    texto: "Hoteles para mascotas", 
-    href: "#", 
-    servicio: "hotel" 
+  {
+    texto: "Hoteles para mascotas",
+    href: "#",
+    servicio: "hotel",
   },
-  { texto: "Cuidadores", 
-    href: "#", 
-    servicio: "cuidador" 
-  }
+  { texto: "Cuidadores", href: "#", servicio: "cuidador" },
 ];
 
 let filtroActualLocalidad = "todas";
@@ -268,10 +204,13 @@ let filtroActualServicio = null;
 
 //TARJETAS CLINICAS
 
-function renderClinicas(localidadSeleccionada = "todas", servicioSeleccionado = null) {
+function renderClinicas(
+  localidadSeleccionada = "todas",
+  servicioSeleccionado = null
+) {
   const clinicaList = document.getElementById("services");
-    clinicaList.style.display = "flex";
-    clinicaList.style.flexDirection = "column";
+  clinicaList.style.display = "flex";
+  clinicaList.style.flexDirection = "column";
 
   // Eliminar solo las tarjetas de clínicas
   const tarjetasClinicas = clinicaList.querySelectorAll(".card-clinica");
@@ -283,14 +222,15 @@ function renderClinicas(localidadSeleccionada = "todas", servicioSeleccionado = 
   if (localidadSeleccionada !== "todas") {
     clinicasFiltradas = clinicasFiltradas.filter(
       (clinica) => clinica.localidad === localidadSeleccionada
-    ); console.log("Filtro  localidad aplicado");
-    
+    );
+    console.log("Filtro  localidad aplicado");
   }
   //Fitro servicio
   if (servicioSeleccionado) {
-    clinicasFiltradas = clinicasFiltradas.filter(
-      (clinica) => clinica.servicios.includes(servicioSeleccionado)
-    ); console.log("Filtro servicios aplicado")
+    clinicasFiltradas = clinicasFiltradas.filter((clinica) =>
+      clinica.servicios.includes(servicioSeleccionado)
+    );
+    console.log("Filtro servicios aplicado");
   }
 
   clinicasFiltradas.forEach((clinica) => {
@@ -327,7 +267,9 @@ function botonFiltro() {
   opcionTodas.textContent = "Todas las localidades";
   select.appendChild(opcionTodas);
 
-  const localidadesUnicas = [...new Set(clinicas.map((clinica) => clinica.localidad))];
+  const localidadesUnicas = [
+    ...new Set(clinicas.map((clinica) => clinica.localidad)),
+  ];
   localidadesUnicas.forEach((localidad) => {
     const opcion = document.createElement("option");
     opcion.value = localidad;
@@ -375,7 +317,7 @@ function crearLinks() {
   const seccionServicios = document.getElementById("services");
   if (seccionServicios) {
     seccionServicios.appendChild(contenedorLinks);
-  } 
+  }
 }
 
 function crearBotonReset() {
@@ -386,12 +328,11 @@ function crearBotonReset() {
   botonReset.textContent = "Resetear Filtros";
   botonReset.classList.add("boton-reset");
 
-  
   botonReset.addEventListener("click", () => {
     filtroActualLocalidad = "todas";
     filtroActualServicio = null;
-    document.getElementById("filtroLocalidad").value = "todas"; 
-    renderClinicas(filtroActualLocalidad, filtroActualServicio); 
+    document.getElementById("filtroLocalidad").value = "todas";
+    renderClinicas(filtroActualLocalidad, filtroActualServicio);
   });
 
   contenedorBotonReset.appendChild(botonReset);
@@ -401,6 +342,6 @@ function crearBotonReset() {
 }
 
 crearBotonReset();
-botonFiltro();      
-crearLinks();      
-renderClinicas();   
+botonFiltro();
+crearLinks();
+renderClinicas();

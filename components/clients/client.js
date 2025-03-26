@@ -16,7 +16,7 @@ const submitCreateNewClient = (event) => {
     isShowing: false,
     cliente: clientName.value,
     email: clientMail.value,
-    proximaCita: "24-04-2025",
+    // proximaCita: "24-04-2025",
   };
 
   clientes.unshift(newClient);
@@ -68,8 +68,8 @@ const renderClients = () => {
       petBreed.classList.add("hidden");
     }
 
-    const nextDate = document.createElement("p");
-    nextDate.textContent = `Próxima cita: ${client.proximaCita}`;
+    // const nextDate = document.createElement("p");
+    // nextDate.textContent = `Próxima cita: ${client.proximaCita}`;
 
     const clientName = document.createElement("p");
     clientName.textContent = `Cliente: ${client.cliente}`;
@@ -89,14 +89,11 @@ const renderClients = () => {
     btnDelete.classList.add("btn-delete");
 
     btnDelete.addEventListener("click", () => {
-      console.log(client.id);
+      console.log(client);
 
-      // const filterClients = clientes.filter((client) => client !== client.id);
+      clientes = clientes.filter((c) => c.id !== client.id);
 
-      // console.log(filterClients);
-
-      // const clientFilter = clientes.filter((client) => client.id !== clientId);
-      // console.log(clientFilter);
+      renderClients();
     });
 
     clientCard.append(
@@ -107,7 +104,7 @@ const renderClients = () => {
       petBreed,
       clientName,
       clientEmail,
-      nextDate,
+      // nextDate,
       btnEdit,
       btnDelete
     );
@@ -147,17 +144,17 @@ const renderClients = () => {
 
       breedBox.append(petBreedLabel, petBreed);
 
-      const dateBox = document.createElement("div");
+      // const dateBox = document.createElement("div");
 
-      const nextDateLabel = document.createElement("label");
-      nextDateLabel.textContent = "Modificar próxima cita: ";
+      // const nextDateLabel = document.createElement("label");
+      // nextDateLabel.textContent = "Modificar próxima cita: ";
 
-      const nextDate = document.createElement("input");
-      nextDate.type = "date";
-      nextDate.id = `edit-date-${client.id}`;
-      nextDate.value = client.proximaCita;
+      // const nextDate = document.createElement("input");
+      // nextDate.type = "date";
+      // nextDate.id = `edit-date-${client.id}`;
+      // nextDate.value = client.proximaCita;
 
-      dateBox.append(nextDateLabel, nextDate);
+      // dateBox.append(nextDateLabel, nextDate);
 
       const btnSubmitEdit = document.createElement("button");
       btnSubmitEdit.type = "submit";
@@ -169,12 +166,12 @@ const renderClients = () => {
         editClient(client.id, {
           cliente: clientName.value,
           especie: petSpecies.value,
-          proximaCita: nextDate.value,
+          // proximaCita: nextDate.value,
         });
         event.target.reset();
       });
 
-      form.append(clientNameBox, speciesBox, breedBox, dateBox, btnSubmitEdit);
+      form.append(clientNameBox, speciesBox, breedBox, btnSubmitEdit);
 
       clientCard.appendChild(form);
     }

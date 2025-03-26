@@ -6,6 +6,7 @@ const submitCreateNewClient = (event) => {
   const petSpecies = document.querySelector("#pet-species");
   const petBreed = document.querySelector("#pet-breed");
   const clientMail = document.querySelector("#client-email");
+  const review = document.querySelector("#review");
 
   const newClient = {
     id: new Date().getTime(),
@@ -16,6 +17,7 @@ const submitCreateNewClient = (event) => {
     isShowing: false,
     cliente: clientName.value,
     email: clientMail.value,
+    reseña: review.value,
     // proximaCita: "24-04-2025",
   };
 
@@ -37,6 +39,9 @@ const renderClients = () => {
     const petImg = document.createElement("img");
     petImg.setAttribute("src", client.imagen);
     petImg.classList.add("hidden");
+
+    const clientReview = document.createElement("p");
+    clientReview.textContent = clientReview.value;
 
     /**
      * Problemas con la lógica de este botón. Al final optamos por toggle para facilitarla.
@@ -105,6 +110,7 @@ const renderClients = () => {
       clientName,
       clientEmail,
       // nextDate,
+      clientReview,
       btnEdit,
       btnDelete
     );

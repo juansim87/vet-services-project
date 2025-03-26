@@ -139,6 +139,20 @@ const createElements = () => {
 
   clientEmail.append(clientEmailLabel, clientEmailInput);
 
+  //RESEÑA
+  const reviewBox = document.createElement("div");
+  reviewBox.classList.add("review-text-area");
+
+  const reviewLabel = document.createElement("label");
+  reviewLabel.for = "review";
+  reviewLabel.textContent = "Tu reseña: ";
+
+  const reviewInput = document.createElement("textarea");
+  reviewInput.id = "review";
+
+  reviewBox.append(reviewLabel, reviewInput);
+
+
   //BOTÓN SUBMIT
 
   const btnSubmitRegister = document.createElement("button");
@@ -154,6 +168,7 @@ const createElements = () => {
     petSpeciesBox,
     petBreedBox,
     clientEmail,
+    reviewBox,
     btnSubmitRegister
   );
 

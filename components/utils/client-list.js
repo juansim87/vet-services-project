@@ -10,6 +10,7 @@ let clientes = [
       cliente: "Juan Simón",
       email: "juan.simon@pet-it.com",
       proximaCita: "2025-03-06",
+      reseña: "Atapuerco no era capaz de encontrar trufas, pero le han arreglado los problemas de olfato y ahora es como un detector. ¡Servicio de 10!"
     },
     {
       id: 2,
@@ -22,6 +23,8 @@ let clientes = [
       cliente: "Luis Fury",
       email: "fury.lopez@pet-it.com",
       proximaCita: "2025-03-06",
+      reseña: "Gracias a la 'paticura' que le hicieron a Piticli ya no me desgarra cuando lo pongo en mi brazo."
+
     },
     {
       id: 3,
@@ -34,6 +37,8 @@ let clientes = [
       cliente: "Luis Simón",
       email: "luis.simon@pet-it.com",
       proximaCita: "2025-03-06",
+      reseña: "Ha pasado de ser una perra hiperactiva a activa nada más, mis figuritas de Warhammer lo agradecen."
+
     },
     {
       id: 4,
@@ -46,5 +51,7 @@ let clientes = [
       cliente: "Eugenio Drosdov",
       email: "far.drosdov@pet-it.com",
       proximaCita: "2025-03-06",
+      reseña: "Dejé a Brunne en el hotel de gatos y cuando fuia buscarlo el muy desgraciado no se quería ir. Habla muy bien del trato del hotel, ¡gracias!"
+
     },
   ];

@@ -1,22 +1,24 @@
-let appData = clientes;
+let appData = {};
 
-const CLIENT_DATABASE_TEMPLATE = {
-  clientes: [],
-};
+// const CLIENT_DATABASE_TEMPLATE = {
+//   clientes: [],
+// };
 
+const CLIENT_DATABASE_TEMPLATE = clientes;
 document.addEventListener("DOMContentLoaded", () => {
   const clientDatabase = getDataFromStorage("client-database");
 
   if (!clientDatabase) {
     saveDataInStorage("client-database", CLIENT_DATABASE_TEMPLATE);
   }
+
   appData = getDataFromStorage("client-database");
 
   console.log("Valor inicial de App Data", appData);
 });
 
 const createElements = () => {
-   //SECCIÓN HERO
+  //SECCIÓN HERO
   const hero = document.getElementById("hero");
   hero.style.setProperty("background-image", "url(/media/mascotas.webp)");
   hero.style.setProperty("background-repeat", "no-repeat");
@@ -139,7 +141,7 @@ const createElements = () => {
 
   clientEmail.append(clientEmailLabel, clientEmailInput);
 
-  //RESEÑA
+  //COMENTARIO
   const reviewBox = document.createElement("div");
   reviewBox.classList.add("review-text-area");
 
@@ -151,7 +153,6 @@ const createElements = () => {
   reviewInput.id = "review";
 
   reviewBox.append(reviewLabel, reviewInput);
-
 
   //BOTÓN SUBMIT
 
@@ -190,11 +191,11 @@ const editClient = (id, fields) => {
     client.isEditing = false;
     client.especie = fields.especie;
     client.proximaCita = fields.proximaCita;
+    client.comentario = fields.comentario;
   }
+  saveDataInStorage("client-database", appData);
   renderClients();
 };
-
-
 
 crearBotonReset();
 botonFiltro();

@@ -17,11 +17,15 @@ const submitCreateNewClient = (event) => {
     isShowing: false,
     cliente: clientName.value,
     email: clientMail.value,
-    reseña: review.value,
+    comentario: review.value,
     // proximaCita: "24-04-2025",
   };
 
+  console.log(review.value);
+
   clientes.unshift(newClient);
+
+  saveDataInStorage("client-database", appData);
 
   renderClients();
 };
@@ -41,7 +45,7 @@ const renderClients = () => {
     petImg.classList.add("hidden");
 
     const clientReview = document.createElement("p");
-    clientReview.textContent = clientReview.value;
+    clientReview.textContent = `${client.comentario}`;
 
     /**
      * Problemas con la lógica de este botón. Al final optamos por toggle para facilitarla.
@@ -94,10 +98,9 @@ const renderClients = () => {
     btnDelete.classList.add("btn-delete");
 
     btnDelete.addEventListener("click", () => {
-      console.log(client);
-
       clientes = clientes.filter((c) => c.id !== client.id);
-
+      saveDataInStorage("client-database", appData);
+      
       renderClients();
     });
 
@@ -150,6 +153,16 @@ const renderClients = () => {
 
       breedBox.append(petBreedLabel, petBreed);
 
+      const reviewBox = document.createElement("div");
+      const reviewLabel = document.createElement("label");
+      reviewLabel.textContent = "Modificar reseña:";
+
+      const review = document.createElement("textarea");
+      review.id = `edit-review-${client.id}`;
+      review.value = client.comentario;
+
+      reviewBox.append(reviewLabel, review);
+
       // const dateBox = document.createElement("div");
 
       // const nextDateLabel = document.createElement("label");
@@ -172,12 +185,20 @@ const renderClients = () => {
         editClient(client.id, {
           cliente: clientName.value,
           especie: petSpecies.value,
+          comentario: review.value,
           // proximaCita: nextDate.value,
         });
+        saveDataInStorage("client-database", appData);
         event.target.reset();
       });
 
-      form.append(clientNameBox, speciesBox, breedBox, btnSubmitEdit);
+      form.append(
+        clientNameBox,
+        speciesBox,
+        breedBox,
+        reviewBox,
+        btnSubmitEdit
+      );
 
       clientCard.appendChild(form);
     }

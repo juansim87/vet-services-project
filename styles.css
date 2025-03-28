@@ -1,9 +1,52 @@
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #E1D8CF;
+    color: #272C40;
+    font: bold 1.2rem 'Roboto', sans-serif;
+}
+
+#hero {
+    width: 100%;
+}
+
+.title-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.title-img img {
+    max-width: 200px;
+}
+
 #premises {
     display: flex;
     width: 100%;
     box-sizing: border-box;
     gap: 20px;
     padding: 20px;
+}
+
+
+#linksContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#clinicasContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+    justify-content: space-between;
 }
 
 /* tarjetas de clínicas */
@@ -65,15 +108,14 @@
 
 /* filtro de localidad */
 .filter-button {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
 }
 
 .filter-button label {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 

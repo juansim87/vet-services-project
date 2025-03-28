@@ -1,39 +1,23 @@
-
-
 let filtroActualLocalidad = "todas";
 let filtroActualServicio = null;
 
-
-function renderClinicas(
-    localidadSeleccionada = "todas",
-    servicioSeleccionado = null
-) {
-    const clinicaList = document.getElementById("services");
-    clinicaList.style.display = "flex";
-    clinicaList.style.flexDirection = "column";
-
-    // Eliminar solo las tarjetas de clínicas
-    const tarjetasClinicas = clinicaList.querySelectorAll(".card-clinica");
-    tarjetasClinicas.forEach((tarjeta) => tarjeta.remove());
+function renderClinicas(localidadSeleccionada = "todas", servicioSeleccionado = null) {
+    const contenedorClinicas = document.getElementById("clinicasContainer");
+    if (!contenedorClinicas) return; // Evitar errores si el contenedor no existe
+    
+    contenedorClinicas.innerHTML = ""; // Limpiar tarjetas anteriores
 
     let clinicasFiltradas = clinicas;
 
-    // Filtro localidad
     if (localidadSeleccionada !== "todas") {
-        clinicasFiltradas = clinicasFiltradas.filter(
-            (clinica) => clinica.localidad === localidadSeleccionada
-        );
-        console.log("Filtro  localidad aplicado");
-    }
-    //Fitro servicio
-    if (servicioSeleccionado) {
-        clinicasFiltradas = clinicasFiltradas.filter((clinica) =>
-            clinica.servicios.includes(servicioSeleccionado)
-        );
-        console.log("Filtro servicios aplicado");
+        clinicasFiltradas = clinicasFiltradas.filter(clinica => clinica.localidad === localidadSeleccionada);
     }
 
-    clinicasFiltradas.forEach((clinica) => {
+    if (servicioSeleccionado) {
+        clinicasFiltradas = clinicasFiltradas.filter(clinica => clinica.servicios.includes(servicioSeleccionado));
+    }
+
+    clinicasFiltradas.forEach(clinica => {
         const tarjetaClinica = document.createElement("div");
         tarjetaClinica.classList.add("card-clinica");
 
@@ -47,12 +31,55 @@ function renderClinicas(
         localidadClinica.textContent = `Localidad: ${clinica.localidad}`;
 
         tarjetaClinica.append(nombreClinica, serviciosClinica, localidadClinica);
-        clinicaList.appendChild(tarjetaClinica);
+        contenedorClinicas.appendChild(tarjetaClinica);
     });
 }
 
-//boton filtro
+function crearLinks() {
+    const contenedorLinks = document.getElementById("linksContainer");
+    if (!contenedorLinks) return; // Evitar errores si el contenedor no existe
 
+    contenedorLinks.innerHTML = ""; // Limpiar enlaces anteriores
+
+    links.forEach(linkInfo => {
+        const tarjetaProfesional = document.createElement("div");
+        tarjetaProfesional.classList.add("card-service");
+
+        const enlaceProfesional = document.createElement("a");
+        enlaceProfesional.textContent = linkInfo.texto;
+        enlaceProfesional.setAttribute("href", "#");
+        enlaceProfesional.classList.add("enlace-profesional");
+        enlaceProfesional.dataset.servicio = linkInfo.servicio;
+
+        enlaceProfesional.addEventListener("click", (e) => {
+            e.preventDefault();
+            filtroActualServicio = e.target.dataset.servicio;
+            renderClinicas(filtroActualLocalidad, filtroActualServicio);
+        });
+
+        tarjetaProfesional.appendChild(enlaceProfesional);
+        contenedorLinks.appendChild(tarjetaProfesional);
+    });
+}
+
+// Función para inicializar la estructura base
+function inicializarEstructura() {
+    const contenedorPrincipal = document.getElementById("services");
+
+    // Crear y añadir el contenedor para las clínicas
+    const contenedorClinicas = document.createElement("div");
+    contenedorClinicas.setAttribute("id", "clinicasContainer");
+    contenedorClinicas.classList.add("clinicas-container");
+
+    // Crear y añadir el contenedor para los enlaces
+    const contenedorLinks = document.createElement("div");
+    contenedorLinks.setAttribute("id", "linksContainer");
+    contenedorLinks.classList.add("links-container");
+
+    contenedorPrincipal.append(contenedorLinks, contenedorClinicas);
+}
+
+// Función para crear el filtro por localidad
 function botonFiltro() {
     const contenedorFiltro = document.createElement("div");
     contenedorFiltro.classList.add("filter-button");
@@ -69,9 +96,7 @@ function botonFiltro() {
     opcionTodas.textContent = "Todas las localidades";
     select.appendChild(opcionTodas);
 
-    const localidadesUnicas = [
-        ...new Set(clinicas.map((clinica) => clinica.localidad)),
-    ];
+    const localidadesUnicas = [...new Set(clinicas.map((clinica) => clinica.localidad))];
     localidadesUnicas.forEach((localidad) => {
         const opcion = document.createElement("option");
         opcion.value = localidad;
@@ -91,37 +116,7 @@ function botonFiltro() {
     contenedorPrincipal.before(contenedorFiltro);
 }
 
-function crearLinks() {
-    const contenedorLinks = document.createElement("div");
-    contenedorLinks.classList.add("services-container");
-    contenedorLinks.setAttribute("id", "menuLinks");
-
-    links.forEach((linkInfo) => {
-        const tarjetaProfesional = document.createElement("div");
-        tarjetaProfesional.classList.add("card-service");
-
-        const enlaceProfesional = document.createElement("a");
-        enlaceProfesional.textContent = linkInfo.texto;
-        enlaceProfesional.setAttribute("href", "#");
-        enlaceProfesional.classList.add("enlace-profesional");
-        enlaceProfesional.dataset.servicio = linkInfo.servicio;
-
-        enlaceProfesional.addEventListener("click", (e) => {
-            e.preventDefault();
-            filtroActualServicio = e.target.dataset.servicio;
-            renderClinicas(filtroActualLocalidad, filtroActualServicio);
-        });
-
-        tarjetaProfesional.appendChild(enlaceProfesional);
-        contenedorLinks.appendChild(tarjetaProfesional);
-    });
-
-    const seccionServicios = document.getElementById("services");
-    if (seccionServicios) {
-        seccionServicios.appendChild(contenedorLinks);
-    }
-}
-
+// Función para crear el botón de reset de filtros
 function crearBotonReset() {
     const contenedorBotonReset = document.createElement("div");
     contenedorBotonReset.classList.add("reset-button");
@@ -142,3 +137,10 @@ function crearBotonReset() {
     const contenedorPrincipal = document.getElementById("services");
     contenedorPrincipal.after(contenedorBotonReset);
 }
+
+// Llamar a la función para preparar la estructura al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    inicializarEstructura(); // Crea los contenedores principales
+    crearLinks(); // Renderiza los enlaces
+    renderClinicas(); // Renderiza las tarjetas
+});

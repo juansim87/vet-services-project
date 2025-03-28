@@ -77,6 +77,9 @@ function inicializarEstructura() {
     contenedorLinks.classList.add("links-container");
 
     contenedorPrincipal.append(contenedorLinks, contenedorClinicas);
+
+    crearLinks(); // Renderiza los enlaces
+    renderClinicas(); // Renderiza las tarjetas
 }
 
 // Función para crear el filtro por localidad
@@ -140,7 +143,5 @@ function crearBotonReset() {
 
 // Llamar a la función para preparar la estructura al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
-    inicializarEstructura(); // Crea los contenedores principales
-    crearLinks(); // Renderiza los enlaces
-    renderClinicas(); // Renderiza las tarjetas
+    inicializarEstructura(); // Crea los contenedores princi
 });

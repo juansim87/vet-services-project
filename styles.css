@@ -1,15 +1,20 @@
+body{
+    
+    background-color: #E1D8CF;
+}
 .nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: #E1D8CF;
-    color: #272C40;
+    color: #003366;
     font: bold 1.2rem 'Roboto', sans-serif;
 }
 
 #hero {
-    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .title-img {
@@ -46,23 +51,29 @@
     flex-wrap: wrap;
     gap: 20px;
     padding-top: 20px;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
 }
 
 /* tarjetas de clínicas */
 .card-clinica {
-    background-color: #fff;
+    background-color:#003366;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     transition: all 0.3s ease-in-out;
-    max-width: 300px;
+    width: 280px;
+    
+    color: #fff;
 }
 
-.card-clinica:hover {
+.card-clinica:hover,
+.boton-reset:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -70,12 +81,11 @@
 .card-clinica h2 {
     margin: 0;
     font-size: 1.5rem;
-    color: #333;
 }
 
 .card-clinica p {
     margin: 0;
-    color: #555;
+    font-size: 1rem;
 }
 
 /* links servicios */
@@ -87,7 +97,7 @@
 }
 
 .card-service {
-    background-color: #fff;
+    background-color: #272C40;
     padding: 10px 15px;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -95,7 +105,7 @@
 
 .card-service a {
     text-decoration: none;
-    color: #0066cc;
+    color: #fff;
     font-size: 1.1rem;
     font-weight: bold;
     display: block;
@@ -131,10 +141,10 @@
 .reset-button {
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 40px;
 }
 
-.reset-button .boton-reset {
+.boton-reset {
     background-color: #ff6666;
     border: none;
     padding: 10px 20px;
@@ -147,8 +157,9 @@
 }
 
 
-.reset-button .boton-reset:hover {
-    background-color: #ff4444;  }
+.boton-reset:hover {
+    background-color: #ff4444;  
+}
 
 .title-img img {
     width: 100%;

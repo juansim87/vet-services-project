@@ -21,11 +21,11 @@ const submitCreateNewClient = (event) => {
     // proximaCita: "24-04-2025",
   };
 
-  console.log(review.value);
-
   clientes.unshift(newClient);
 
-  saveDataInStorage("client-database", appData);
+  // saveDataInStorage("client-database", appData);
+
+  console.log(appData);
 
   renderClients();
 };
@@ -75,7 +75,7 @@ const renderClients = () => {
       petBreed.textContent = `Raza: ${client.raza}`;
     } else {
       petBreed.classList.add("hidden");
-    }
+    };
 
     // const nextDate = document.createElement("p");
     // nextDate.textContent = `Próxima cita: ${client.proximaCita}`;
@@ -99,7 +99,7 @@ const renderClients = () => {
 
     btnDelete.addEventListener("click", () => {
       clientes = clientes.filter((c) => c.id !== client.id);
-      saveDataInStorage("client-database", appData);
+      
       
       renderClients();
     });
@@ -150,6 +150,7 @@ const renderClients = () => {
       const petBreed = document.createElement("input");
       petBreed.id = `edit-breed-${client.id}`;
       petBreed.value = client.raza;
+      
 
       breedBox.append(petBreedLabel, petBreed);
 
@@ -188,7 +189,6 @@ const renderClients = () => {
           comentario: review.value,
           // proximaCita: nextDate.value,
         });
-        saveDataInStorage("client-database", appData);
         event.target.reset();
       });
 

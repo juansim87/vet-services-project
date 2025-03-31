@@ -1,3 +1,10 @@
+/**
+ *
+ * @param {*} key Clave con la que se buscará del almacenamiento del localStorage
+ * @returns  Si encuentra algo, lo devuelve. Si no lo encuentra, devuelve null.
+ */
+
+
 const getDataFromStorage = (key) => {
     const data = localStorage.getItem(key);
   

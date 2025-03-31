@@ -4,7 +4,10 @@ let appData = {};
 //   clientes: [],
 // };
 
-const CLIENT_DATABASE_TEMPLATE = clientes;
+const CLIENT_DATABASE_TEMPLATE = {
+  clientes:[]
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   const clientDatabase = getDataFromStorage("client-database");
 
@@ -192,8 +195,9 @@ const editClient = (id, fields) => {
     client.especie = fields.especie;
     client.proximaCita = fields.proximaCita;
     client.comentario = fields.comentario;
+    
   }
-  saveDataInStorage("client-database", appData);
+  
   renderClients();
 };
 

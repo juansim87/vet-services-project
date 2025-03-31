@@ -150,7 +150,7 @@ const createElements = () => {
 
   const reviewLabel = document.createElement("label");
   reviewLabel.for = "review";
-  reviewLabel.textContent = "Tu reseña: ";
+  reviewLabel.textContent = "Comentario: ";
 
   const reviewInput = document.createElement("textarea");
   reviewInput.id = "review";
@@ -193,7 +193,7 @@ const editClient = (id, fields) => {
     client.cliente = fields.cliente;
     client.isEditing = false;
     client.especie = fields.especie;
-    client.proximaCita = fields.proximaCita;
+    client.raza = fields.raza;
     client.comentario = fields.comentario;
     
   }

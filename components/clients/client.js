@@ -158,6 +158,8 @@ const renderClients = () => {
       const reviewLabel = document.createElement("label");
       reviewLabel.textContent = "Modificar reseña:";
 
+
+
       const review = document.createElement("textarea");
       review.id = `edit-review-${client.id}`;
       review.value = client.comentario;
@@ -186,6 +188,7 @@ const renderClients = () => {
         editClient(client.id, {
           cliente: clientName.value,
           especie: petSpecies.value,
+          raza: petBreed.value,
           comentario: review.value,
           // proximaCita: nextDate.value,
         });

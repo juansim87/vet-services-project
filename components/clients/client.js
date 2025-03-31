@@ -6,6 +6,7 @@ const submitCreateNewClient = (event) => {
   const petSpecies = document.querySelector("#pet-species");
   const petBreed = document.querySelector("#pet-breed");
   const clientMail = document.querySelector("#client-email");
+  const review = document.querySelector("#review");
 
   const newClient = {
     id: new Date().getTime(),
@@ -16,10 +17,15 @@ const submitCreateNewClient = (event) => {
     isShowing: false,
     cliente: clientName.value,
     email: clientMail.value,
+    comentario: review.value,
     // proximaCita: "24-04-2025",
   };
 
   clientes.unshift(newClient);
+
+  // saveDataInStorage("client-database", appData);
+
+  console.log(appData);
 
   renderClients();
 };
@@ -37,6 +43,9 @@ const renderClients = () => {
     const petImg = document.createElement("img");
     petImg.setAttribute("src", client.imagen);
     petImg.classList.add("hidden");
+
+    const clientReview = document.createElement("p");
+    clientReview.textContent = `${client.comentario}`;
 
     /**
      * Problemas con la lógica de este botón. Al final optamos por toggle para facilitarla.
@@ -66,7 +75,7 @@ const renderClients = () => {
       petBreed.textContent = `Raza: ${client.raza}`;
     } else {
       petBreed.classList.add("hidden");
-    }
+    };
 
     // const nextDate = document.createElement("p");
     // nextDate.textContent = `Próxima cita: ${client.proximaCita}`;
@@ -89,10 +98,9 @@ const renderClients = () => {
     btnDelete.classList.add("btn-delete");
 
     btnDelete.addEventListener("click", () => {
-      console.log(client);
-
       clientes = clientes.filter((c) => c.id !== client.id);
-
+      
+      
       renderClients();
     });
 
@@ -105,6 +113,7 @@ const renderClients = () => {
       clientName,
       clientEmail,
       // nextDate,
+      clientReview,
       btnEdit,
       btnDelete
     );
@@ -141,8 +150,19 @@ const renderClients = () => {
       const petBreed = document.createElement("input");
       petBreed.id = `edit-breed-${client.id}`;
       petBreed.value = client.raza;
+      
 
       breedBox.append(petBreedLabel, petBreed);
+
+      const reviewBox = document.createElement("div");
+      const reviewLabel = document.createElement("label");
+      reviewLabel.textContent = "Modificar reseña:";
+
+      const review = document.createElement("textarea");
+      review.id = `edit-review-${client.id}`;
+      review.value = client.comentario;
+
+      reviewBox.append(reviewLabel, review);
 
       // const dateBox = document.createElement("div");
 
@@ -166,12 +186,19 @@ const renderClients = () => {
         editClient(client.id, {
           cliente: clientName.value,
           especie: petSpecies.value,
+          comentario: review.value,
           // proximaCita: nextDate.value,
         });
         event.target.reset();
       });
 
-      form.append(clientNameBox, speciesBox, breedBox, btnSubmitEdit);
+      form.append(
+        clientNameBox,
+        speciesBox,
+        breedBox,
+        reviewBox,
+        btnSubmitEdit
+      );
 
       clientCard.appendChild(form);
     }

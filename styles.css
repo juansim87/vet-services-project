@@ -1,20 +1,38 @@
-body {
-    background-color: #e1d8cf;
+/* Paleta de colores modernizada */
+:root {
+    --primary-color: #0056b3;
+    --secondary-color: #f8f9fa;
+    --accent-color: #ff758c;
+    --dark-color: #272c40;
+    --light-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
+body {
+    background-color: var(--secondary-color);
+    font-family: "Roboto", sans-serif;
+    color: var(--dark-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Navegación */
 .nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #e1d8cf;
-    color: #003366;
-    font: bold 1.2rem "Roboto", sans-serif;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px var(--shadow-color);
 }
 
+/* Hero Section */
 #hero {
     display: flex;
     justify-content: center;
+    padding: 40px;
 }
 
 .title-img {
@@ -24,12 +42,15 @@ body {
     gap: 20px;
     padding: 20px;
     width: 100%;
+    max-width: 1200px;
 }
 
 .title-img img {
-    max-width: 200px;
+    max-width: 250px;
+    border-radius: 12px;
 }
 
+/* Sección de Premises */
 #premises {
     display: flex;
     width: 100%;
@@ -38,13 +59,16 @@ body {
     padding: 20px;
 }
 
+/* Contenedor de enlaces */
 #linksContainer {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
 
+/* Sección de Clínicas */
 #clinicasContainer {
     display: flex;
     flex-wrap: wrap;
@@ -54,102 +78,117 @@ body {
     justify-content: space-around;
 }
 
-/* FORMULARIO */
+.card-clinica {
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    text-align: center;
+    color: var(--light-color);
+    transition: transform 0.3s ease-in-out;
+    width: 280px;
+    height: 140px;
+}
+
+.card-clinica:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.card-clinica h2 {
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+}
+
+/* Formulario */
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
 #info-form {
     display: flex;
     padding: 10px;
     margin: 0 auto;
-    background-color: yellow;
-}
-
-#info-box {
-    display: flex;
-}
-
-.form-box form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 20px;
+    background-color: var(--accent-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 .form-box {
     display: flex;
-    margin: 0 auto;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    background-color: #003366;
-    color: #fff;
-    border: solid white 8px;
-    border-radius: 8px;
-    padding: 12px;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    border-radius: 12px;
+    padding: 20px;
     max-width: 400px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    margin: 0 auto;
 }
 
 .form-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
 }
 
 .form-item label {
-    margin-top: 8px;
+    text-align: left;
+    padding-top: 12px;
+}
+
+.review-text-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
 }
 
 .btn {
-    display: flex;
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #fff;
-    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    color: var(--light-color);
+    background: linear-gradient(135deg, var(--accent-color), #ff7eb3);
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3);
+    box-shadow: 0 4px 10px var(--shadow-color);
     transition: all 0.3s ease-in-out;
 }
 
-/* tarjetas de clínicas */
-.card-clinica {
-    background-color: #003366;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Botón de reset */
+.reset-button {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease-in-out;
-    width: 280px;
-
-    color: #fff;
+    padding: 40px;
 }
 
-.card-clinica:hover,
-.boton-reset:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.card-clinica h2 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-.card-clinica p {
-    margin: 0;
+.boton-reset {
+    background-color: #ff4d4d;
+    padding: 10px 20px;
+    color: var(--light-color);
+    font-weight: bold;
     font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
-/* links servicios */
+.boton-reset:hover {
+    background-color: #cc0000;
+}
+
+/* Tarjetas de servicios */
 .services-container {
     display: flex;
     gap: 15px;
@@ -158,15 +197,15 @@ body {
 }
 
 .card-service {
-    background-color: #272c40;
+    background-color: var(--dark-color);
     padding: 10px 15px;
     border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .card-service a {
     text-decoration: none;
-    color: #fff;
+    color: var(--light-color);
     font-size: 1.1rem;
     font-weight: bold;
     display: block;
@@ -174,15 +213,17 @@ body {
 }
 
 .card-service a:hover {
-    color: #003366;
+    color: var(--primary-color);
 }
 
-/* filtro de localidad */
+/* Filtro de localidad */
 .filter-button {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .filter-button label {
@@ -198,47 +239,23 @@ body {
     border: 1px solid #ddd;
 }
 
-/*  reset */
-.reset-button {
-    display: flex;
-    justify-content: center;
-    padding: 40px;
-}
-
-.boton-reset {
-    background-color: #ff6666;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.boton-reset:hover {
-    background-color: #ff4444;
-}
-
-.title-img img {
-    width: 100%;
-}
-
+/* Base de datos de clientes */
 #client-database {
     display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    white-space: wrap;
+    background-color: #0056b3;
 }
 
 .client-card {
-    width: 300px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
-    border: 1px solid #000;
+    border: 1px solid var(--dark-color);
     border-radius: 10px;
     padding: 16px;
     gap: 4px;
-}
-
-.hidden {
-    display: none;
+    background-color: #ffffff;
 }

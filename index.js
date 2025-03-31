@@ -1,21 +1,21 @@
-let appData = {};
+let appData = [];
 
 // const CLIENT_DATABASE_TEMPLATE = {
 //   clientes: [],
 // };
 
-const CLIENT_DATABASE_TEMPLATE = {
-  clientes: [],
-};
+const CLIENT_DATABASE_TEMPLATE = [...clientes];
 
 document.addEventListener("DOMContentLoaded", () => {
   const clientDatabase = getDataFromStorage("client-database");
 
-  if (!clientDatabase) {
+  if (!clientDatabase || clientDatabase.length === 0) {
     saveDataInStorage("client-database", CLIENT_DATABASE_TEMPLATE);
   }
 
   appData = getDataFromStorage("client-database");
+
+  renderClients();
 
   console.log("Valor inicial de App Data", appData);
 });
@@ -63,7 +63,7 @@ const createElements = () => {
   //FORM
 
   const clientForm = document.createElement("form");
-  clientFormBox.id = "create-client-form";
+  clientForm.id = "create-client-form";
 
   //NOMBRE CLIENTE
   const clientNameBox = document.createElement("div");
@@ -181,7 +181,7 @@ const createElements = () => {
   btnSubmitRegister.textContent = "Registrarse";
   btnSubmitRegister.classList.add("btn");
 
-  btnSubmitRegister.addEventListener("click", submitCreateNewClient);
+  clientForm.addEventListener("submit", submitCreateNewClient);
 
   clientForm.append(
     clientNameBox,
@@ -198,15 +198,13 @@ const createElements = () => {
 
   clientFormSection.appendChild(clientFormBox);
 
-  console.log(clientFormBox);
+saveDataInStorage("client-database", appData)
 };
 
-createElements();
 
-renderClients();
 
 const editClient = (id, fields) => {
-  const client = clientes.find((cliente) => cliente.id === id);
+  const client = appData.find((cliente) => cliente.id === id);
   if (client) {
     client.cliente = fields.cliente;
     client.isEditing = false;
@@ -214,11 +212,15 @@ const editClient = (id, fields) => {
     client.raza = fields.raza;
     client.imagen = fields.imagen;
     client.comentario = fields.comentario;
+
+    saveDataInStorage("client-database", appData);
   }
 
   renderClients();
 };
 
+createElements();
+renderClients();
 crearBotonReset();
 botonFiltro();
 crearLinks();

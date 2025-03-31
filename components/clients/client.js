@@ -5,10 +5,9 @@ const submitCreateNewClient = (event) => {
   const petName = document.querySelector("#pet-name");
   const petSpecies = document.querySelector("#pet-species");
   const petBreed = document.querySelector("#pet-breed");
+  const petImage = document.querySelector("#pet-image");
   const clientMail = document.querySelector("#client-email");
   const review = document.querySelector("#review");
-  const petImage = document.querySelector("#pet-image");
-  // const image = document.querySelector("")
 
   const newClient = {
     id: new Date().getTime(),
@@ -20,14 +19,12 @@ const submitCreateNewClient = (event) => {
     cliente: clientName.value,
     email: clientMail.value,
     comentario: review.value,
-    // proximaCita: "24-04-2025",
+    
   };
 
-  clientes.unshift(newClient);
+  appData.unshift(newClient);
 
-  // saveDataInStorage("client-database", appData);
-
-  console.log(appData);
+  saveDataInStorage("client-database", appData);
 
   renderClients();
 };
@@ -35,7 +32,7 @@ const submitCreateNewClient = (event) => {
 const renderClients = () => {
   const container = document.getElementById("client-database");
   container.innerHTML = "";
-  clientes.forEach((client) => {
+  appData.forEach((client) => {
     const clientCard = document.createElement("div");
     clientCard.classList.add("client-card");
 
@@ -93,9 +90,10 @@ const renderClients = () => {
     btnDelete.classList.add("btn-delete");
 
     btnDelete.addEventListener("click", () => {
-      clientes = clientes.filter((c) => c.id !== client.id);
+      appData = appData.filter((c) => c.id !== client.id);
 
       renderClients();
+      saveDataInStorage("client-database", appData);
     });
 
     clientCard.append(
@@ -170,7 +168,7 @@ const renderClients = () => {
       btnSubmitEdit.type = "submit";
       btnSubmitEdit.textContent = "Confirmar cambios";
 
-      form.addEventListener("submit", (event) => {
+      form.addEventListener("click", (event) => {
         event.preventDefault();
 
         editClient(client.id, {
@@ -196,5 +194,7 @@ const renderClients = () => {
     }
 
     container.append(clientCard);
+
+    saveDataInStorage("client-database", appData);
   });
 };

@@ -55,6 +55,56 @@ body{
     justify-content: space-around;
 }
 
+/* FORMULARIO */
+#info-form {
+    display: flex;
+    background-color: #fff;
+    padding: 10px;
+    max-width: 350px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+#info-box {
+    display: flex;
+}
+
+.form-box form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    
+}
+
+.form-box {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #003366;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.form-item label {
+    margin-top:  8px;
+}
+
+
 /* tarjetas de clínicas */
 .card-clinica {
     background-color:#003366;

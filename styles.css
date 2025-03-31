@@ -28,11 +28,17 @@ body {
     box-shadow: 0 4px 10px var(--shadow-color);
 }
 
+nav li {
+    list-style: none;
+}
+
 /* Hero Section */
 #hero {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 40px;
+    text-align: center;
 }
 
 .title-img {

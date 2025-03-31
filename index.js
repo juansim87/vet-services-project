@@ -5,7 +5,7 @@ let appData = {};
 // };
 
 const CLIENT_DATABASE_TEMPLATE = {
-  clientes:[]
+  clientes: [],
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -128,6 +128,23 @@ const createElements = () => {
 
   petBreedBox.append(petBreedLabel, petBreedInput);
 
+  //IMAGEN
+
+  const petImageBox = document.createElement("div");
+  petImageBox.classList.add("form-item");
+
+  const petImageLabel = document.createElement("label");
+  petImageLabel.for = "pet-image";
+  petImageLabel.textContent = "Selecciona una imagen";
+
+  const petImageInput = document.createElement("input");
+  petImageInput.id = "pet-image";
+  // petImageInput.type = "file";
+  petImageInput.type = "text";
+
+  petImageBox.append(petImageLabel, petImageInput);
+
+
   //EMAIL
 
   const clientEmail = document.createElement("div");
@@ -171,6 +188,7 @@ const createElements = () => {
     petNameBox,
     petSpeciesBox,
     petBreedBox,
+    petImageBox,
     clientEmail,
     reviewBox,
     btnSubmitRegister
@@ -194,10 +212,10 @@ const editClient = (id, fields) => {
     client.isEditing = false;
     client.especie = fields.especie;
     client.raza = fields.raza;
+    client.imagen = fields.imagen;
     client.comentario = fields.comentario;
-    
   }
-  
+
   renderClients();
 };
 

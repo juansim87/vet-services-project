@@ -7,13 +7,15 @@ const submitCreateNewClient = (event) => {
   const petBreed = document.querySelector("#pet-breed");
   const clientMail = document.querySelector("#client-email");
   const review = document.querySelector("#review");
+  const petImage = document.querySelector("#pet-image");
+  // const image = document.querySelector("")
 
   const newClient = {
     id: new Date().getTime(),
     mascota: petName.value,
     especie: petSpecies.value,
     raza: petBreed.value,
-    imagen: "/media/client-pets/pet-icon.png",
+    imagen: petImage.value || "/media/client-pets/pet-icon.png",
     isShowing: false,
     cliente: clientName.value,
     email: clientMail.value,
@@ -45,11 +47,7 @@ const renderClients = () => {
     petImg.classList.add("hidden");
 
     const clientReview = document.createElement("p");
-    clientReview.textContent = `${client.comentario}`;
-
-    /**
-     * Problemas con la lógica de este botón. Al final optamos por toggle para facilitarla.
-     */
+    clientReview.textContent = `Comentario: ${client.comentario}`;
 
     const btnShowImg = document.createElement("button");
     btnShowImg.type = "button";
@@ -75,10 +73,7 @@ const renderClients = () => {
       petBreed.textContent = `Raza: ${client.raza}`;
     } else {
       petBreed.classList.add("hidden");
-    };
-
-    // const nextDate = document.createElement("p");
-    // nextDate.textContent = `Próxima cita: ${client.proximaCita}`;
+    }
 
     const clientName = document.createElement("p");
     clientName.textContent = `Cliente: ${client.cliente}`;
@@ -99,8 +94,7 @@ const renderClients = () => {
 
     btnDelete.addEventListener("click", () => {
       clientes = clientes.filter((c) => c.id !== client.id);
-      
-      
+
       renderClients();
     });
 
@@ -112,7 +106,6 @@ const renderClients = () => {
       petBreed,
       clientName,
       clientEmail,
-      // nextDate,
       clientReview,
       btnEdit,
       btnDelete
@@ -150,7 +143,6 @@ const renderClients = () => {
       const petBreed = document.createElement("input");
       petBreed.id = `edit-breed-${client.id}`;
       petBreed.value = client.raza;
-      
 
       breedBox.append(petBreedLabel, petBreed);
 
@@ -158,29 +150,25 @@ const renderClients = () => {
       const reviewLabel = document.createElement("label");
       reviewLabel.textContent = "Modificar reseña:";
 
-
-
       const review = document.createElement("textarea");
       review.id = `edit-review-${client.id}`;
       review.value = client.comentario;
 
       reviewBox.append(reviewLabel, review);
 
-      // const dateBox = document.createElement("div");
+      const petImageBox = document.createElement("div");
+      const petImageLabel = document.createElement("label");
+      petImageLabel.textContent = "Modificar imagen";
 
-      // const nextDateLabel = document.createElement("label");
-      // nextDateLabel.textContent = "Modificar próxima cita: ";
+      const petImage = document.createElement("textarea");
+      petImage.id = `edit-pet-image-${client.id}`;
+      petImage.value = client.imagen;
 
-      // const nextDate = document.createElement("input");
-      // nextDate.type = "date";
-      // nextDate.id = `edit-date-${client.id}`;
-      // nextDate.value = client.proximaCita;
-
-      // dateBox.append(nextDateLabel, nextDate);
+      petImageBox.append(petImageLabel, petImage);
 
       const btnSubmitEdit = document.createElement("button");
       btnSubmitEdit.type = "submit";
-      btnSubmitEdit.textContent = "Editar";
+      btnSubmitEdit.textContent = "Confirmar cambios";
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -189,8 +177,8 @@ const renderClients = () => {
           cliente: clientName.value,
           especie: petSpecies.value,
           raza: petBreed.value,
+          imagen: petImage.value,
           comentario: review.value,
-          // proximaCita: nextDate.value,
         });
         event.target.reset();
       });
@@ -199,6 +187,7 @@ const renderClients = () => {
         clientNameBox,
         speciesBox,
         breedBox,
+        petImageBox,
         reviewBox,
         btnSubmitEdit
       );

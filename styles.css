@@ -1,15 +1,15 @@
-body{
-    
-    background-color: #E1D8CF;
+body {
+    background-color: #e1d8cf;
 }
+
 .nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #E1D8CF;
+    background-color: #e1d8cf;
     color: #003366;
-    font: bold 1.2rem 'Roboto', sans-serif;
+    font: bold 1.2rem "Roboto", sans-serif;
 }
 
 #hero {
@@ -38,7 +38,6 @@ body{
     padding: 20px;
 }
 
-
 #linksContainer {
     display: flex;
     align-items: center;
@@ -58,11 +57,9 @@ body{
 /* FORMULARIO */
 #info-form {
     display: flex;
-    background-color: #fff;
     padding: 10px;
-    max-width: 350px;
     margin: 0 auto;
-    border-radius: 8px;
+    background-color: yellow;
 }
 
 #info-box {
@@ -76,7 +73,6 @@ body{
     justify-content: center;
     gap: 8px;
     margin-bottom: 20px;
-    
 }
 
 .form-box {
@@ -87,9 +83,10 @@ body{
     flex-direction: column;
     background-color: #003366;
     color: #fff;
+    border: solid white 8px;
     border-radius: 8px;
     padding: 12px;
-    width: 100%;
+    max-width: 400px;
 }
 
 .form-item {
@@ -101,13 +98,27 @@ body{
 }
 
 .form-item label {
-    margin-top:  8px;
+    margin-top: 8px;
 }
 
+.btn {
+    display: flex;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3);
+    transition: all 0.3s ease-in-out;
+}
 
 /* tarjetas de clínicas */
 .card-clinica {
-    background-color:#003366;
+    background-color: #003366;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -118,7 +129,7 @@ body{
     gap: 10px;
     transition: all 0.3s ease-in-out;
     width: 280px;
-    
+
     color: #fff;
 }
 
@@ -147,7 +158,7 @@ body{
 }
 
 .card-service {
-    background-color: #272C40;
+    background-color: #272c40;
     padding: 10px 15px;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -206,9 +217,8 @@ body{
     transition: background-color 0.3s;
 }
 
-
 .boton-reset:hover {
-    background-color: #ff4444;  
+    background-color: #ff4444;
 }
 
 .title-img img {

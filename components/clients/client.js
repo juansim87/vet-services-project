@@ -50,6 +50,7 @@ const renderClients = () => {
     clientReview.textContent = `Comentario: ${client.comentario}`;
 
     const btnShowImg = document.createElement("button");
+    btnShowImg.classList.add("btn");
     btnShowImg.type = "button";
     btnShowImg.textContent = "Mostrar Imagen";
 
@@ -82,6 +83,7 @@ const renderClients = () => {
     clientEmail.textContent = `Email: ${client.email}`;
 
     const btnEdit = document.createElement("button");
+    btnEdit.classList.add("btn");
     btnEdit.textContent = "Editar cliente";
     btnEdit.addEventListener("click", () => {
       client.isEditing = !client.isEditing;
@@ -90,7 +92,7 @@ const renderClients = () => {
 
     const btnDelete = document.createElement("button");
     btnDelete.textContent = "Eliminar ficha";
-    btnDelete.classList.add("btn-delete");
+    btnDelete.classList.add("btn");
 
     btnDelete.addEventListener("click", () => {
       clientes = clientes.filter((c) => c.id !== client.id);
@@ -167,6 +169,7 @@ const renderClients = () => {
       petImageBox.append(petImageLabel, petImage);
 
       const btnSubmitEdit = document.createElement("button");
+      btnSubmitEdit.classList.add("btn");
       btnSubmitEdit.type = "submit";
       btnSubmitEdit.textContent = "Confirmar cambios";
 

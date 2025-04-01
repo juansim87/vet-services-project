@@ -21,31 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const createElements = () => {
-  //SECCIÓN HERO
-  const hero = document.getElementById("hero");
-  hero.style.setProperty("background-image", "url(/media/mascotas.webp)");
-  hero.style.setProperty("background-repeat", "no-repeat");
-  hero.style.setProperty("background-size", "cover");
-
-  const titleBox = document.createElement("div");
-  titleBox.classList.add("title-box");
-
-  const title = document.createElement("h1");
-  title.textContent = "Pet It";
-  title.style.fontSize = "60px";
-
-  const titleImgBox = document.createElement("div");
-  titleImgBox.classList.add("title-img");
-
-  const titleImg = document.createElement("img");
-  titleImg.src = "/media/paws-icon.webp";
-
-  titleImgBox.append(titleImg);
-
-  titleBox.append(title, titleImgBox);
-
-  hero.append(titleBox);
-
   //SECCIÓN DE FORM
 
   const clientFormSection = document.getElementById("info-form");
@@ -58,7 +33,7 @@ const createElements = () => {
   //TÍTULO FORM
 
   const formTitle = document.createElement("h2");
-  formTitle.textContent = "Queremos conocerte";
+  formTitle.textContent = "Únete al club mascotero";
 
   //FORM
 

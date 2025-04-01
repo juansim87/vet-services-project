@@ -1,267 +1,302 @@
 /* Paleta de colores modernizada */
 :root {
-    --primary-color: #0056b3;
-    --secondary-color: #f8f9fa;
-    --accent-color: #ff758c;
-    --dark-color: #272c40;
-    --light-color: #ffffff;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+  --primary-color: #0056b3;
+  --secondary-color: #f8f9fa;
+  --accent-color: #ff758c;
+  --dark-color: #272c40;
+  --light-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
-    background-color: var(--secondary-color);
-    font-family: "Roboto", sans-serif;
-    color: var(--dark-color);
-    margin: 0;
-    padding: 0;
+  background-color: var(--secondary-color);
+  font-family: "Roboto", sans-serif;
+  color: var(--dark-color);
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Navegación */
 .nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: var(--primary-color);
-    color: var(--light-color);
-    font-size: 1.2rem;
-    box-shadow: 0 4px 10px var(--shadow-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.nav-menu ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
 }
 
 nav li {
-    list-style: none;
+  list-style: none;
+}
+
+nav li a {
+  color: #ddd;
+  text-decoration: none;
 }
 
 /* Hero Section */
 #hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/media/mascotas.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 40px;
+  text-align: center;
+}
+
+.title-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title h1 {
+  font-size: 100px;
+  font-family: "Boldonse", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color: #0056b3;
 }
 
 .title-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px;
+  width: 200px;
 }
 
 .title-img img {
-    max-width: 250px;
-    border-radius: 12px;
+  width: 100%;
 }
 
-/* Sección de Premises */
+/* Sección Premises */
 #premises {
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
-    gap: 20px;
-    padding: 20px;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 20px;
+  padding: 20px;
 }
 
 /* Contenedor de enlaces */
 #linksContainer {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 /* Sección de Clínicas */
 #clinicasContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding-top: 20px;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 20px;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .card-clinica {
-    background-color: var(--primary-color);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px var(--shadow-color);
-    text-align: center;
-    color: var(--light-color);
-    transition: transform 0.3s ease-in-out;
-    width: 280px;
-    height: 140px;
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  text-align: center;
+  color: var(--light-color);
+  transition: transform 0.3s ease-in-out;
+  width: 280px;
+  height: 140px;
 }
 
 .card-clinica:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px var(--shadow-color);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 .card-clinica h2 {
-    margin-bottom: 10px;
-    font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
 }
 
 /* Formulario */
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-
 #info-form {
-    display: flex;
-    padding: 10px;
-    margin: 0 auto;
-    background-color: var(--accent-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px var(--shadow-color);
+  display: flex;
+  padding: 10px;
+  margin: 0 auto;
+  /* background-color: var(--accent-color); */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 .form-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--dark-color);
-    color: var(--light-color);
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 400px;
-    box-shadow: 0 4px 10px var(--shadow-color);
-    margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  margin: 0 auto;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-item {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-item label {
-    text-align: left;
-    padding-top: 12px;
+  text-align: left;
+  padding-top: 12px;
 }
 
 .review-text-area {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
 }
 
 .btn {
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: var(--light-color);
-    background: linear-gradient(135deg, var(--accent-color), #ff7eb3);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px var(--shadow-color);
-    transition: all 0.3s ease-in-out;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--light-color);
+  background: linear-gradient(135deg, var(--accent-color), #ff7eb3);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  transition: all 0.3s ease-in-out;
 }
 
 .btn:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* Botón de reset */
 .reset-button {
-    display: flex;
-    justify-content: center;
-    padding: 40px;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
 }
 
 .boton-reset {
-    background-color: #ff4d4d;
-    padding: 10px 20px;
-    color: var(--light-color);
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+  background-color: #ff4d4d;
+  padding: 10px 20px;
+  color: var(--light-color);
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .boton-reset:hover {
-    background-color: #cc0000;
+  background-color: #cc0000;
 }
 
 /* Tarjetas de servicios */
 .services-container {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .card-service {
-    background-color: var(--dark-color);
-    padding: 10px 15px;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px var(--shadow-color);
+  background-color: var(--dark-color);
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .card-service a {
-    text-decoration: none;
-    color: var(--light-color);
-    font-size: 1.1rem;
-    font-weight: bold;
-    display: block;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: var(--light-color);
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: block;
+  transition: color 0.3s ease;
 }
 
 .card-service a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 /* Filtro de localidad */
 .filter-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    flex-wrap: wrap;
-    gap: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .filter-button label {
-    font-size: 1.5rem;
-    font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .filter-button select {
-    padding: 10px;
-    font-size: 1rem;
-    margin-left: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 1rem;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
 /* Base de datos de clientes */
 #client-database {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 20px;
-    white-space: wrap;
-    background-color: #0056b3;
+  display: flex;
+  /* overflow-x: auto; */
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  white-space: wrap;
+  background-color: #0056b3;
 }
 
 .client-card {
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--dark-color);
-    border-radius: 10px;
-    padding: 16px;
-    gap: 4px;
-    background-color: #ffffff;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--dark-color);
+  border-radius: 10px;
+  padding: 16px;
+  gap: 4px;
+  background-color: #ffffff;
 }

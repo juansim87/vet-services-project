@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Boldonse&display=swap" rel="stylesheet">
     <script src="/components/utils/client-list.js" defer></script>
     <script src="/components/utils/clinics.js" defer></script>
     <script src="/helpers/storage.js" defer></script>
@@ -14,6 +14,7 @@
     <script src="/components/clients/client.js" defer></script>
     <script src="index.js" defer></script>
   </head>
+
   <body>
     <div class="body-content">
       <header>
@@ -22,9 +23,8 @@
             <div class="nav-logo"></div>
             <div class="nav-menu">
               <ul>
-                <li>Servicios</li>
-                <li>Nuestras clínicas</li>
-                <li>Registro (nombre por elegir)</li>
+                <li><a href="#premises">Nuestras clínicas</a></li>
+                <li><a href="#info-form">Club mascotero</a></li>
               </ul>
             </div>
           </div>
@@ -32,58 +32,54 @@
       </header>
       <main>
         <div class="main-content">
-          <section id="hero"></section>
+          <section id="hero">
+            <div class="title-box">
+              <div class="title">
+                <h1>Pet It</h1>
+                <div class="title-img">
+                  <img src="/media/paws-icon.webp" alt="Logo de la empresa Pet It" />
+                </div>
+              </div>
+            </div>
+          </section>
           <section id="premises"></section>
-          <section id="services"></section>
+
           <section id="info-form"></section>
-          <div id="client-database"></div>
-=======
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="/components/utils/client-list.js" defer></script>
-  <script src="/components/utils/clinics.js" defer></script>
-  <script src="/helpers/storage.js" defer></script>
-  <script src="/components/premises/premises.js" defer></script>
-  <script src="/components/utils/links.js" defer></script>
-  <script src="/components/clients/client.js" defer></script>
-  <script src="index.js" defer></script>
-</head>
-
-<body>
-  <div class="body-content">
-    <header>
-      <nav>
-        <div class="nav-content">
-          <div class="nav-logo"></div>
-          <div class="nav-menu">
-            <ul>
-              <li>Servicios</li>
-              <li>Nuestras clínicas</li>
-              <li>Registro (nombre por elegir)</li>
-            </ul>
+          <div id="client-database">
+            <h2>Club Pet It</h2>
           </div>
->>>>>>> luislopez
         </div>
-      </nav>
-    </header>
-    <main>
-      <div class="main-content">
-        <section id="hero"></section>
-        <section id="premises">
-        </section>
-        <section id="services"></section>
-        <section id="info-form"></section>
-        <div id="client-database"></div>
-      </div>
-    </main>
-    <footer>
-      <div class="footer-content"></div>
-    </footer>
-  </div>
-</body>
-
+      </main>
+      <footer>
+        <div class="footer-content"></div>
+      </footer>
+    </div>
+  </body>
 </html>
+
+<!-- const hero = document.getElementById("hero");
+  
+
+  const titleBox = document.createElement("div");
+  titleBox.classList.add("title-box");
+
+  const title = document.createElement("div");
+  title.classList.add("title");
+
+  const titleText = document.createElement("h1");
+  titleText.textContent = "Pet It";
+  titleText.fontSize = "100px"
+
+  title.append(titleText);
+
+  const titleImgBox = document.createElement("div");
+  titleImgBox.classList.add("title-img");
+
+  const titleImg = document.createElement("img");
+  titleImg.src = "/media/paws-icon.webp";
+
+  titleImgBox.append(titleImg);
+
+  titleBox.append(title, titleImgBox);
+
+  hero.append(titleBox); -->

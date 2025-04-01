@@ -143,5 +143,5 @@ function crearBotonReset() {
 
 // Llamar a la función para preparar la estructura al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
-    inicializarEstructura(); // Crea los contenedores princi
+    inicializarEstructura(); 
 });

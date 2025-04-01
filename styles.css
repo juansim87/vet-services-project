@@ -1,3 +1,62 @@
+/* Paleta de colores modernizada */
+:root {
+    --primary-color: #0056b3;
+    --secondary-color: #f8f9fa;
+    --accent-color: #ff758c;
+    --dark-color: #272c40;
+    --light-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--secondary-color);
+    font-family: "Roboto", sans-serif;
+    color: var(--dark-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Navegación */
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+nav li {
+    list-style: none;
+}
+
+/* Hero Section */
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.title-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.title-img img {
+    max-width: 250px;
+    border-radius: 12px;
+}
+
+/* Sección de Premises */
 #premises {
     display: flex;
     width: 100%;
@@ -6,36 +65,136 @@
     padding: 20px;
 }
 
-/* tarjetas de clínicas */
-.card-clinica {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* Contenedor de enlaces */
+#linksContainer {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: all 0.3s ease-in-out;
-    max-width: 300px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Sección de Clínicas */
+#clinicasContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-clinica {
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    text-align: center;
+    color: var(--light-color);
+    transition: transform 0.3s ease-in-out;
+    width: 280px;
+    height: 140px;
 }
 
 .card-clinica:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 .card-clinica h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
 }
 
-.card-clinica p {
-    margin: 0;
-    color: #555;
+/* Formulario */
+
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-/* links servicios */
+
+#info-form {
+    display: flex;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: var(--accent-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 400px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    margin: 0 auto;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item label {
+    text-align: left;
+    padding-top: 12px;
+}
+
+.review-text-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--light-color);
+    background: linear-gradient(135deg, var(--accent-color), #ff7eb3);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Botón de reset */
+.reset-button {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.boton-reset {
+    background-color: #ff4d4d;
+    padding: 10px 20px;
+    color: var(--light-color);
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.boton-reset:hover {
+    background-color: #cc0000;
+}
+
+/* Tarjetas de servicios */
 .services-container {
     display: flex;
     gap: 15px;
@@ -44,15 +203,15 @@
 }
 
 .card-service {
-    background-color: #fff;
+    background-color: var(--dark-color);
     padding: 10px 15px;
     border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .card-service a {
     text-decoration: none;
-    color: #0066cc;
+    color: var(--light-color);
     font-size: 1.1rem;
     font-weight: bold;
     display: block;
@@ -60,20 +219,21 @@
 }
 
 .card-service a:hover {
-    color: #003366;
+    color: var(--primary-color);
 }
 
-/* filtro de localidad */
+/* Filtro de localidad */
 .filter-button {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .filter-button label {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -85,47 +245,23 @@
     border: 1px solid #ddd;
 }
 
-/*  reset */
-.reset-button {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-
-.reset-button .boton-reset {
-    background-color: #ff6666;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-
-.reset-button .boton-reset:hover {
-    background-color: #ff4444;  }
-
-.title-img img {
-    width: 100%;
-}
-
+/* Base de datos de clientes */
 #client-database {
     display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    white-space: wrap;
+    background-color: #0056b3;
 }
 
 .client-card {
-    width: 300px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
-    border: 1px solid #000;
+    border: 1px solid var(--dark-color);
     border-radius: 10px;
     padding: 16px;
     gap: 4px;
-}
-
-.hidden {
-    display: none;
+    background-color: #ffffff;
 }
